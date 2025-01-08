@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", serif;
+}
+
+// pages
+body {
+  font-family: "Inter", serif;
+  background: white ;
+  @apply bg-blue-50
+}
+
+section {
+  min-height: 100vh;
+}
+.max-container {
+  @apply max-w-[420px] px-4 mx-auto py-3;
+}
+
+.home {
+  .ant-select-selection-item {
+    color: #96969e;
+  }
+}
+// .ant-select-dropdown {
+//   width: 100% !important;
+//   max-width: 342px;
+//   top: 60px !important;
+// }
+.ein {
+  .ant-radio-wrapper-checked {
+    background: #fff;
+    border-color: #004cff;
+    p {
+      color: #004cff;
+    }
+  }
+}
+.fax {
+  .ant-form-item {
+    margin-bottom: 15px;
+  }
+}
+.start-business {
+  .ant-select-selector {
+    padding: 0 16px !important;
+  }
+  .ant-form-item-required {
+    &::before {
+      content: "" !important;
+    }
+  }
+  .ant-select-selection-item {
+    @apply text-sm font-medium text-dark;
+  }
+}
+.members {
+  .ant-radio-wrapper-in-form-item {
+    border: 1px solid #fff;
+    background: transparent;
+  }
+  .ant-radio-wrapper-in-form-item.ant-radio-wrapper-checked {
+    border: 1px solid #004cff;
+    background: #fff;
+  }
+  .ant-checkbox-wrapper-in-form-item {
+    border: 1px solid #e3e5e5;
+    background: #fff;
+  }
+  .ant-checkbox-wrapper-in-form-item.ant-checkbox-wrapper-checked {
+    border: 1px solid #004cff;
+  }
+}
+
+// some ant-styles
+
+.ant-form-item-label {
+  label {
+    font-size: 14px;
+    line-height: 16px;
+    color: #16242c;
+    height: max-content !important;
+  }
+}
+
+.ant-select-dropdown {
+  span {
+    font-family: "Roboto", serif;
+  }
+}
+.ant-select-item {
+  background: #fff !important;
+  &:hover {
+    background: #e6f7ff !important;
+  }
+}
+.ant-select-item-option-active {
+  background: #e6f7ff !important;
+}
+
+.ant-select-selection-placeholder {
+  color: #16242c !important;
+  @apply font-roboto text-base font-medium;
+}
+.special-label {
+  display: none !important;
+}
+
+// some styles
+.sub-section {
+  @apply border-2 border-white rounded-[35px]  px-[10px] box-border py-[14px] w-full;
+}
+.modal {
+  animation: modal-animation 0.3s ease-in-out;
+}
+@keyframes modal-animation {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
