@@ -3,7 +3,6 @@ import SectionTitle from "../../components/sectionTitle";
 import PageSwitcher from "../../components/pageSwitcher";
 import { useState } from "react";
 import { ICardDefinition } from "../../types/data.models";
-import Background from "../../components/background";
 import Logo from "../../components/logo";
 import contentA from "../../assets/icons/contentA.svg";
 import contentX from "../../assets/icons/contentX.svg";
@@ -197,8 +196,6 @@ const Package = () => {
 
   return (
     <section>
-      <Background type="left" top={205} />
-      <Background type="left" top={702} />
       <div className="max-container">
         <Logo />
         <SectionTitle title="Choose Your Package" />

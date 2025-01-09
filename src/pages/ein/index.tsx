@@ -55,7 +55,7 @@ const Ein = () => {
               </div>
             </Radio>
           </Radio.Group>
-          <Button type="primary" onClick={chooseEin} className="w-full">
+          <Button size="large" type="primary" onClick={chooseEin} className="w-full">
             Choose
           </Button>
         </div>

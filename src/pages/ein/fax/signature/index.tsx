@@ -37,12 +37,13 @@ const Signature = () => {
           <Logo />
           <SectionTitle title="Signature" />
           <SignatureCanvas
+
             ref={sigCanvas}
             penColor="#16242C"
             onEnd={handleEndStroke}
             canvasProps={{
               className:
-                "sigCanvas w-full h-[250px] border border-[#E3E5E5] rounded-xl mt-[30px]",
+                "sigCanvas w-full h-[250px] border bg-white border-[#E3E5E5] rounded-xl mt-[30px]",
             }}
           />
           <div className="flex justify-between mt-2">

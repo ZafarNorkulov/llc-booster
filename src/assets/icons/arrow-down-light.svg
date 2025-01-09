@@ -1,0 +1,10 @@
+<svg width="25" height="12" viewBox="0 0 25 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="weui:arrow-filled" clip-path="url(#clip0_661_721)">
+<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M13.2116 1.84306L18.8686 7.50006L17.4546 8.91406L12.5046 3.96406L7.55463 8.91406L6.14062 7.50006L11.7976 1.84306C11.9852 1.65559 12.2395 1.55028 12.5046 1.55028C12.7698 1.55028 13.0241 1.65559 13.2116 1.84306Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_661_721">
+<rect width="12" height="24" fill="white" transform="matrix(0 -1 1 0 0.5 12)"/>
+</clipPath>
+</defs>
+</svg>

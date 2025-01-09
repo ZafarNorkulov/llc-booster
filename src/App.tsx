@@ -26,13 +26,15 @@ import ProAgent from "./pages/form/agent/pro-agent";
 import BusinessBank from "./pages/form/business-bank";
 
 function App() {
+
+
   return (
     <>
       <Router>
         <div className="flex flex-col justify-between min-h-screen">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/company" element={<Package />} />
+            <Route path="/package" element={<Package />} />
             <Route path="/ein" element={<Ein />} />
             <Route path="/ein/fax" element={<Fax />} />
             <Route path="/ein/fax/signature" element={<Signature />} />

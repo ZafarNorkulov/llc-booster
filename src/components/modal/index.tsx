@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
-import Warning from "../icon/warning";
+import warning from "../../assets/icons/Vector.svg";
 
 const CustomModal = ({
   open,
@@ -53,7 +53,7 @@ const CustomModal = ({
             } bg-white `}
           >
             <div className="bg-[#E6F7FF5C] rounded-full flex justify-center items-center p-[14px]">
-              <Warning  />
+              <img src={warning} />
             </div>
           </div>
           <div className="flex flex-col text-center mt-[15px] gap-[10px] text-dark mb-[21px]">

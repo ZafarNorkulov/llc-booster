@@ -1,6 +1,6 @@
 import SectionTitle from "../../../components/sectionTitle";
 import Steps from "../../../components/steps";
-import EditIcon from "../../../assets/icons/pen-edit.png";
+import EditIcon from "../../../assets/icons/pen-edit.svg";
 import PageSwitcher from "../../../components/pageSwitcher";
 
 const ProAgent = () => {
@@ -18,7 +18,7 @@ const ProAgent = () => {
           <div className="px-[15px] py-3 bg-white rounded-xl w-full text-dark mt-7">
             <div className="flex justify-between items-center">
               <h4 className="text-lg font-semibold">General information</h4>
-              <span className="text-[#004CFF] gap-1 text-base font-bold leading-4 text-right flex ">
+              <span className="text-color2 gap-1 text-base font-bold leading-4 text-right flex ">
                 Edit
                 <img src={EditIcon} width={16} height={16} />
               </span>
@@ -41,7 +41,7 @@ const ProAgent = () => {
           <div className="px-[15px] py-3 bg-white rounded-xl w-full text-dark mt-7">
             <div className="flex justify-between items-center">
               <h4 className="text-lg font-semibold">Company information</h4>
-              <span className="text-[#004CFF] gap-1 text-base font-bold leading-4 text-right flex ">
+              <span className="text-color2 gap-1 text-base font-bold leading-4 text-right flex ">
                 Edit
                 <img src={EditIcon} width={16} height={16} />
               </span>
@@ -56,7 +56,7 @@ const ProAgent = () => {
                 </h5>
               </div>
             </div>
-            <a className="text-[#004CFF] mt-[7px] text-xs leading-4">
+            <a className="text-color2 mt-[7px] text-xs leading-4">
               The address of the service is used
             </a>
           </div>
@@ -64,7 +64,7 @@ const ProAgent = () => {
           <div className="px-[15px] py-3 bg-white rounded-xl w-full text-dark mt-7">
             <div className="flex justify-between items-center">
               <h4 className="text-lg font-semibold">Contact Person</h4>
-              <span className="text-[#004CFF] gap-1 text-base font-bold leading-4 text-right flex ">
+              <span className="text-color2 gap-1 text-base font-bold leading-4 text-right flex ">
                 Edit
                 <img src={EditIcon} width={16} height={16} />
               </span>
@@ -118,7 +118,7 @@ const ProAgent = () => {
           <div className="px-[15px] py-3 bg-white rounded-xl w-full text-dark mt-7">
             <div className="flex justify-between items-center">
               <h4 className="text-lg font-semibold">Members</h4>
-              <span className="text-[#004CFF] gap-1 text-base font-bold leading-4 text-right flex ">
+              <span className="text-color2 gap-1 text-base font-bold leading-4 text-right flex ">
                 Edit
                 <img src={EditIcon} width={16} height={16} />
               </span>

@@ -1,5 +1,6 @@
 import Logo from "../../components/logo";
 import SectionTitle from "../../components/sectionTitle";
+import transactions from "../../assets/icons/uil_transaction.svg";
 
 const TransactionHistory = () => {
   const handleDownload = () => {
@@ -22,8 +23,8 @@ const TransactionHistory = () => {
     amount: number;
   }) => (
     <div className="p-[10px] bg-white rounded-[14px] flex justify-between">
-      <div className="flex items-center gap-1">
-        <span>Icon</span>
+      <div className="flex items-center gap-2">
+        <img src={transactions} />
         <div className="flex flex-col  ">
           <span className="text-[10px] leading-3 text-[#979C9E]">{date}</span>
           <h5 className="font-bold text-sm leading-[18px] text-dark">
@@ -43,7 +44,6 @@ const TransactionHistory = () => {
           onClick={handleDownload}
           className="flex justify-end gap-1 py-[3px] px-[6px]  rounded-full bg-[#FAFAFA]"
         >
-       
           <span className="text-[10px] text-dark">Download (PDF)</span>
         </div>
       </div>
@@ -53,28 +53,27 @@ const TransactionHistory = () => {
   return (
     <section>
       <div className="max-container">
-          <Logo />
+        <Logo />
         <SectionTitle title="Transaction history" />
         <div className="flex flex-col gap-2">
-
-        <TransCard
-          amount={300}
-          company="LLC Booster LLC"
-          service="LLC Registration"
-          date="December 1, 2023"
-        />
-        <TransCard
-          amount={150}
-          company="Dog Market Dog "
-          service="EIN Application"
-          date="November 25, 2023"
-        />
-        <TransCard
-          amount={300}
-          company="Oksana Tropicana Company "
-          service="LLC Registration"
-          date="November 20, 2023"
-        />
+          <TransCard
+            amount={300}
+            company="LLC Booster LLC"
+            service="LLC Registration"
+            date="December 1, 2023"
+          />
+          <TransCard
+            amount={150}
+            company="Dog Market Dog "
+            service="EIN Application"
+            date="November 25, 2023"
+          />
+          <TransCard
+            amount={300}
+            company="Oksana Tropicana Company "
+            service="LLC Registration"
+            date="November 20, 2023"
+          />
         </div>
       </div>
     </section>

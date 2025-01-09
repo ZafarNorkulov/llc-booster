@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import { Dispatch, ReactNode, SetStateAction } from "react";
-import ArrorUp from "../assets/icons/arrow-down.png";
+import ArrorUp from "../assets/icons/arrow-down-light.svg";
 
 const Accordion = ({
   content,

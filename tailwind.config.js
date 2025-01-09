@@ -8,14 +8,15 @@ export default {
         dark: "#16242C",
         "blue-light": "#E6F7FF",
         pagination: "#E3E5E5",
-        error:"#CD0B0B",
-        questin:"#5D5D5D"
+        error: "#CD0B0B",
+        questin: "#5D5D5D",
+        gray: "#FAFBFB",
+        color2: "#004CFF",
       },
       fontFamily: {
-        "roboto": ["Roboto", "serif"],
-        "inter":["Inter","serif"]
+        roboto: ["Roboto", "serif"],
+        inter: ["Inter", "serif"],
       },
-      
     },
   },
   plugins: [],

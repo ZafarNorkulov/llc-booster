@@ -52,13 +52,14 @@ const RegisterAgent = () => {
     <section>
       <div className="max-container">
         <Logo />
-        <SectionTitle title="Registered Agent" />
+        <SectionTitle element title="Registered Agent" />
         <p className="text-dark text-base font-bold text-center">
           Why a Registered Agent is needed:
         </p>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 mt-4">
           {packages.map((item) => (
             <PackageCard
+              key={item.id}
               title={item.title}
               isActive={item.isActive}
               price={item.price}

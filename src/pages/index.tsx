@@ -2,10 +2,15 @@ import { Button, Select } from "antd";
 import { useState } from "react";
 import Logo from "../components/logo";
 import Hero from "../assets/banner.png";
-import Add from "../assets/icons/add.png";
-import Edit from "../assets/icons/edit.png";
-import Apply from "../assets/icons/apply.png";
-import Company from "../assets/icons/F-Square Stack.svg";
+import Add from "../assets/icons/add.svg";
+import Edit from "../assets/icons/edit.svg";
+import Apply from "../assets/icons/apply.svg";
+import Company from "../assets/icons/company.svg";
+import Transaction from "../assets/icons/transaction.svg";
+import user from "../assets/icons/R-user.svg";
+import faq from "../assets/icons/faq.svg";
+import chat from "../assets/icons/Chat- Bubbles.svg";
+import { Link } from "react-router-dom";
 
 interface IOption {
   label: string;
@@ -27,6 +32,30 @@ const Home = () => {
       id: 1,
       title: "My companies",
       icon: Company,
+      url: "/package",
+    },
+    {
+      id: 2,
+      title: "Transaction history",
+      icon: Transaction,
+      url: "/transactions",
+    },
+    {
+      id: 3,
+      title: "Referral program",
+      icon: user,
+      url: "/refferal",
+    },
+    {
+      id: 4,
+      title: "FAQ",
+      icon: faq,
+      url: "",
+    },
+    {
+      id: 5,
+      title: "We’re here to help!",
+      icon: chat,
       url: "",
     },
   ]);
@@ -48,7 +77,7 @@ const Home = () => {
   };
 
   return (
-    <div className="home max-container w-full bg-blue-100">
+    <div className="home max-container w-full">
       <div className=" flex justify-between items-center w-full">
         <div></div>
         <Logo />
@@ -83,7 +112,8 @@ const Home = () => {
       </div>
       <img src={Hero} className="mt-3 w-full" />
       <div className="grid grid-cols-12 gap-[5px] mt-[5px]">
-        <div
+        <Link
+          to="/package"
           className="col-span-4 flex flex-col flex-shrink-0 gap-1 items-center border border-white rounded-xl px-3 py-1 "
           style={{
             background:
@@ -94,8 +124,9 @@ const Home = () => {
           <span className="text-center text-[11px] font-medium leading-[13px] text-dark max-w-[88px]">
             Add a New Company
           </span>
-        </div>
-        <div
+        </Link>
+        <Link
+          to={"/package"}
           className="col-span-4 flex flex-col flex-shrink-0 gap-1 items-center border border-white rounded-xl px-3 py-1"
           style={{
             background:
@@ -107,8 +138,9 @@ const Home = () => {
             Edit
             <br /> Company
           </span>
-        </div>
-        <div
+        </Link>
+        <Link
+          to={"/ein"}
           className="col-span-4 flex flex-col flex-shrink-0 gap-1 items-center border border-white rounded-xl px-3 py-1 "
           style={{
             background:
@@ -119,11 +151,15 @@ const Home = () => {
           <span className="text-center text-[11px] font-medium leading-[13px] text-dark max-w-[88px]">
             Apply <br /> for EIN
           </span>
-        </div>
+        </Link>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 mt-[30px]">
         {menus.map((item) => (
-          <div className="p-2 bg-white rounded-[8px] border border-white flex items-center gap-[10px]">
+          <Link
+            to={item.url}
+            className="p-2 bg-white cursor-pointer rounded-[8px] border border-white flex items-center gap-[10px]"
+            key={item.id}
+          >
             <img
               src={item.icon}
               className=" bg-[#F3F5F6] rounded-[8px] "
@@ -131,7 +167,13 @@ const Home = () => {
                 boxShadow: "0px 2px 8.7px 0px rgba(206, 205, 205, 0.25)",
               }}
             />
-          </div>
+            <span
+              className="text-base text-dark font-medium
+            "
+            >
+              {item.title}
+            </span>
+          </Link>
         ))}
       </div>
     </div>

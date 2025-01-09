@@ -10,7 +10,7 @@ const AddressForm = () => {
       <div className="max-container">
         <Steps activeIndex={4} count={7} />
         <div className="sub-section">
-            <Logo />
+          <Logo />
           <SectionTitle title="Company address" />
           <Form size="large">
             <Form.Item label="Street" name={"street"}>
@@ -31,7 +31,7 @@ const AddressForm = () => {
               <Input />
             </Form.Item>
           </Form>
-          <PageSwitcher  next="/form/members" />
+          <PageSwitcher next="/form/members" />
         </div>
       </div>
     </section>
