@@ -27,7 +27,7 @@ const RefferalProgram = () => {
         .share({
           title: "My Companies",
           text: "Check out my companies on this app!",
-          url: window.location.href, // Sizning sahifangizning URL manzili
+          url: "llc-booster.vercel.app", // Sizning sahifangizning URL manzili
         })
         .then(() => {
           console.log("Successfully shared!");

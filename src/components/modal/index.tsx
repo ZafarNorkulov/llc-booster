@@ -30,7 +30,7 @@ const CustomModal = ({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [open, setOpen]);
+  }, [setOpen]);
 
   return (
     <div

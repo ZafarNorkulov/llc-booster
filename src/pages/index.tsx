@@ -113,7 +113,7 @@ const Home = () => {
       <img src={Hero} className="mt-3 w-full" />
       <div className="grid grid-cols-12 gap-[5px] mt-[5px]">
         <Link
-          to="/package"
+          to="/form/start-business"
           className="col-span-4 flex flex-col flex-shrink-0 gap-1 items-center border border-white rounded-xl px-3 py-1 "
           style={{
             background:

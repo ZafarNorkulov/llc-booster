@@ -1,7 +1,6 @@
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const PageSwitcher = ({
   next,
@@ -21,11 +20,19 @@ const PageSwitcher = ({
       >
         <ArrowLeftOutlined /> Back
       </Button>
-      <Link to={next} onClick={onClick}>
-        <Button type="primary" className="rounded-[48px]" size="large">
-          Next step
-        </Button>
-      </Link>
+      <Button
+        type="primary"
+        className="rounded-[48px]"
+        onClick={() => {
+          if (onClick) {
+            onClick();
+            navigate(next);
+          }
+        }}
+        size="large"
+      >
+        Next step
+      </Button>
     </div>
   );
 };

@@ -12,8 +12,8 @@
 // pages
 body {
   font-family: "Inter", serif;
-  background: white ;
-  @apply bg-blue-50
+  background: white;
+  @apply bg-blue-50;
 }
 
 section {
@@ -51,11 +51,7 @@ section {
   .ant-select-selector {
     padding: 0 16px !important;
   }
-  .ant-form-item-required {
-    &::before {
-      content: "" !important;
-    }
-  }
+
   .ant-select-selection-item {
     @apply text-sm font-medium text-dark;
   }
@@ -80,6 +76,11 @@ section {
 
 // some ant-styles
 
+.ant-form-item-required {
+  &::before {
+    content: "" !important;
+  }
+}
 .ant-form-item-label {
   label {
     font-size: 14px;

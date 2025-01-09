@@ -5,6 +5,7 @@ import PageSwitcher from "../../../components/pageSwitcher";
 import Steps from "../../../components/steps";
 import CustomModal from "../../../components/modal";
 import Logo from "../../../components/logo";
+import warning from "../../../assets/icons/Vector.svg";
 
 interface TState {
   id: number;
@@ -51,6 +52,7 @@ const StartBusiness = () => {
   const [form] = Form.useForm();
   const [selectedState, setSelectedState] = useState<TState | null>(null);
   const [selectedOrg, setSelectedOrg] = useState<TState | null>(null);
+  const [submit, setSubmit] = useState(false);
   const handleSelectState = (value: TState) => {
     setSelectedState(value);
     const elements = [...state];
@@ -79,15 +81,30 @@ const StartBusiness = () => {
 
     setOrganizations(check_orgs);
   };
-  const onFinish = () => {};
+
+  const onFinish = () => {
+    form
+      .validateFields()
+      .then(() => {
+        // Agar forma valid bo'lsa, sahifaga o'tadi
+        form.submit();
+        setSubmit(true);
+      })
+      .catch((errorInfo) => {
+        setSubmit(false);
+        // Agar forma valid bo'lmasa, xatolikni konsolda ko'rsatadi
+        console.error("Validate Failed:", errorInfo);
+      });
+  };
+
   return (
     <section className=" start-business">
       <div className="max-container">
         <Steps activeIndex={1} count={7} />
         <div className="min-h-[calc(100vh-72px)] sub-section">
-            <Logo />
+          <Logo />
           <SectionTitle title="Start your business with confidence" />
-          <Form form={form} size="large">
+          <Form form={form} size="large" >
             <Form.Item
               name="state"
               hasFeedback
@@ -100,6 +117,7 @@ const StartBusiness = () => {
                 className="w-full "
                 placeholder="State"
                 value={selectedState?.title}
+              
               >
                 {state.map((item) => (
                   <Select.Option key={item.id}>
@@ -110,7 +128,7 @@ const StartBusiness = () => {
                       <span className="text-sm font-medium leading-[22px] text-dark">
                         {item.title}
                       </span>
-                      {item.status ? "i" : "a"}
+                      {/* {item.status ? "i" : "a"} */}
                     </div>
                   </Select.Option>
                 ))}
@@ -138,7 +156,7 @@ const StartBusiness = () => {
                       <span className="text-sm font-medium leading-[22px] text-dark">
                         {item.title}
                       </span>
-                      {item.status ? "i" : "a"}
+                      {/* {item.status ? "i" : "a"} */}
                     </div>
                   </Select.Option>
                 ))}
@@ -147,9 +165,13 @@ const StartBusiness = () => {
             <Form.Item
               name={"business"}
               label={
-                <div>
+                <div className="flex items-center gap-1">
                   <span>Business purpose</span>
-                  <span onClick={() => setOpenModal(true)}>!</span>
+                  <img
+                    src={warning}
+                    className="w-4 h-4"
+                    onClick={() => setOpenModal(true)}
+                  />
                 </div>
               }
               rules={[{ required: true, message: "Required field" }]}
@@ -158,7 +180,7 @@ const StartBusiness = () => {
             </Form.Item>
           </Form>
           <PageSwitcher
-            next="/form/company-info"
+            next={submit ? "/form/company-info" : "/form/start-business"}
             onClick={onFinish}
           />
         </div>

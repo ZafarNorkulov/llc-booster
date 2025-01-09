@@ -1,14 +1,32 @@
-import  { useState } from "react";
+import { useState } from "react";
 import SectionTitle from "../../../components/sectionTitle";
 import { Button, Form, Input, Select } from "antd";
 import PageSwitcher from "../../../components/pageSwitcher";
 import Steps from "../../../components/steps";
 import Logo from "../../../components/logo";
+import warning from "../../../assets/icons/Vector.svg";
+import CustomModal from "../../../components/modal";
 
 const CompanyInfo = () => {
- 
   const [form] = Form.useForm();
   const [showCompany, setShowCompany] = useState<string[]>([]);
+  const [modalId, setModalId] = useState<number | null>(null);
+  const [submit, setSubmit] = useState<boolean>(false);
+
+  const onFinish = () => {
+    form
+      .validateFields()
+      .then(() => {
+        // Agar forma valid bo'lsa, sahifaga o'tadi
+        form.submit();
+        setSubmit(true);
+      })
+      .catch((errorInfo) => {
+        setSubmit(false);
+        // Agar forma valid bo'lmasa, xatolikni konsolda ko'rsatadi
+        console.error("Validate Failed:", errorInfo);
+      });
+  };
 
   const handleValuesChange = () => {
     const values = form.getFieldsValue(); // Formadagi barcha qiymatlarni oling
@@ -20,21 +38,30 @@ const CompanyInfo = () => {
     }
   };
 
+  const toggleModal = (id: number | null) => {
+    setModalId((prevId) => (prevId === id ? null : id)); // Bir modal ochilsa, boshqasini yopish
+  };
+
   return (
     <section>
       <div className="max-container min-h-screen">
         <Steps activeIndex={2} count={7} />
         <div className="sub-section flex flex-col justify-between min-h-[calc(100vh-72px)] ">
           <div>
-              <Logo />
+            <Logo />
             <SectionTitle title="Company information" />
 
             <Form size="large" form={form} onValuesChange={handleValuesChange}>
               <Form.Item
                 name={"comp_info"}
+                rules={[{required:true,message:"Required field"}]}
                 label={
-                  <div>
-                    <span>Company name</span> Icon
+                  <div
+                    className="flex items-center gap-1"
+                    onClick={() => toggleModal(1)}
+                  >
+                    <span>Company name</span>
+                    <img src={warning} className="w-4 h-4" />
                   </div>
                 }
               >
@@ -42,16 +69,22 @@ const CompanyInfo = () => {
               </Form.Item>
               <Form.Item
                 name={"designator"}
+                rules={[{required:true,message:"Required field"}]}
+
                 label={
-                  <div>
-                    <span>Designation</span> Icon
+                  <div
+                    className="flex items-center gap-1"
+                    onClick={() => toggleModal(2)}
+                  >
+                    <span>Designation</span>
+                    <img src={warning} className="w-4 h-4" />
                   </div>
                 }
               >
                 <Select placeholder="Choose a designator">
                   <Select.Option value={"LLC"}>
                     <div className="flex justify-between items-center">
-                      <span>LLC</span>i
+                      <span>LLC</span>
                     </div>
                   </Select.Option>
                 </Select>
@@ -82,10 +115,23 @@ const CompanyInfo = () => {
               ""
             )}
           </div>
-
-          <PageSwitcher  next="/form/contact" />
+          <CustomModal
+            open={modalId === 1}
+            title="Company name"
+            desc="Enter desired company name, you can check its availability afterward"
+            setOpen={() => toggleModal(null)}
+          />
+          <CustomModal
+            open={modalId === 2}
+            title="Designation"
+            desc="As required by the state, it is necessary to include a designation in the company name. Please select one of the provided options"
+            setOpen={() => toggleModal(null)}
+          />
+          <PageSwitcher
+            next={submit ? "/form/contact" : "/form/company-info"}
+            onClick={onFinish}
+          />
         </div>
-       
       </div>
     </section>
   );
