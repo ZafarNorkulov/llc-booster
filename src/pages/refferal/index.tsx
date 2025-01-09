@@ -7,9 +7,8 @@ import { useState } from "react";
 
 const RefferalProgram = () => {
   const [copySuccess, setCopySuccess] = useState<boolean>(false);
-
+  console.log(copySuccess);
   const handleCopy = (text: string) => {
-  
     navigator.clipboard
       .writeText(text)
       .then(() => {
