@@ -26,8 +26,17 @@ import ProAgent from "./pages/form/agent/pro-agent";
 import BusinessBank from "./pages/form/business-bank";
 import OwnAgentRegister from "./pages/form/agent/my-own/register";
 import Consultation from "./pages/form/consultation";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const tg = (window as any).Telegram.WebApp;
+
+    tg.ready()
+    console.log("Foydalanuvchi:", tg.initDataUnsafe?.user);
+  }, []);
+
+
   return (
     <>
       <Router>
@@ -49,7 +58,10 @@ function App() {
             <Route path="/form/members" element={<Members />} />
             <Route path="/form/register-agent" element={<RegisterAgent />} />
             <Route path="/form/my-own" element={<OwnAgent />} />
-            <Route path="/form/my-own/register" element={<OwnAgentRegister   />} />
+            <Route
+              path="/form/my-own/register"
+              element={<OwnAgentRegister />}
+            />
             <Route path="/form/professional" element={<ProAgent />} />
             <Route path="/form/business-bank" element={<BusinessBank />} />
             <Route path="/form/consultation" element={<Consultation />} />
