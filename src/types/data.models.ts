@@ -1,15 +1,18 @@
+import {  ReactNode } from "react";
+
 export interface ICardDefinition {
   id: number;
   isActive: boolean;
   rec?: boolean;
-  title: string;
+  icon?: string;
+  title: string | ReactNode;
   type?: boolean;
   desc?: ICardContent[] | string;
   price?: string;
-  pro?: boolean;
-  cardType: string;
+  pro?: ReactNode;
+  cardType: ReactNode | string;
   showContent?: boolean;
-  content?: ICardContent[];
+  content?: ReactNode | ICardContent[];
   background: string[];
 }
 
@@ -18,3 +21,7 @@ export interface ICardContent {
   text: string;
   isActive: boolean;
 }
+
+export type StringObject = {
+  [key: string]: string;
+};

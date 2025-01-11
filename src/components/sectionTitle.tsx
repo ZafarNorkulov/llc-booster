@@ -3,9 +3,11 @@ import warning from "../assets/icons/Vector.svg";
 const SectionTitle = ({
   title,
   element,
+  onClick,
 }: {
   title: string;
   element?: boolean;
+  onClick?: () => void;
 }) => {
   if (!element) {
     return (
@@ -19,7 +21,11 @@ const SectionTitle = ({
         <h2 className="text-[28px] leading-[32px] font-bold text-center ">
           {title}
         </h2>
-        <img src={warning} width={19} height={19} />
+        <img
+          src={warning}
+          className="w-[19px] h-[19px] cursor-pointer"
+          onClick={onClick}
+        />
       </div>
     );
   }

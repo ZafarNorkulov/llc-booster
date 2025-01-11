@@ -56,7 +56,7 @@ const CustomModal = ({
               <img src={warning} />
             </div>
           </div>
-          <div className="flex flex-col text-center mt-[15px] gap-[10px] text-dark mb-[21px]">
+          <div className="flex flex-col text-center mt-[30px] gap-[10px] text-dark mb-[21px]">
             <h3 className="text-xl leading-[27px] font-bold text-[#202020]">
               {title}
             </h3>

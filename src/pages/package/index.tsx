@@ -1,7 +1,7 @@
 import PackageCard from "../../components/packageCard";
 import SectionTitle from "../../components/sectionTitle";
 import PageSwitcher from "../../components/pageSwitcher";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ICardDefinition } from "../../types/data.models";
 import Logo from "../../components/logo";
 import contentA from "../../assets/icons/contentA.svg";
@@ -14,7 +14,7 @@ const Package = () => {
       isActive: true,
       title: "Starter",
       desc: "Includes everything you need to launch your business",
-      cardType: "free",
+      cardType: "+State Fee",
       price: "0",
       showContent: false,
       content: [
@@ -71,7 +71,7 @@ const Package = () => {
       isActive: false,
       title: "Non-Resident",
       desc: "Perfect for non-residents: business address and virtual mailbox included",
-      cardType: "free",
+      cardType: "+State Fee",
       price: "64",
       showContent: false,
       content: [
@@ -129,7 +129,7 @@ const Package = () => {
       rec: true,
       title: "Premium",
       desc: "Perfect for non-residents: business address and virtual mailbox included",
-      cardType: "free",
+      cardType: "+State Fee",
       price: "64",
       showContent: false,
       content: [
@@ -182,6 +182,9 @@ const Package = () => {
       background: ["#FF5858", "#F857A6"],
     },
   ]);
+  const [selectedPackage, setSelectedPackage] = useState<ICardDefinition>(
+    packages[0]
+  );
 
   const toggleContent = (id: number) => {
     setPackages((prevPackages) =>
@@ -193,6 +196,13 @@ const Package = () => {
       )
     );
   };
+  useEffect(() => {
+    const myPackage =
+      parseFloat(selectedPackage.price || "0") > 0
+        ? `${selectedPackage.price}`
+        : "free";
+    sessionStorage.setItem("basic_package", myPackage);
+  }, [selectedPackage]);
 
   return (
     <section>
@@ -208,13 +218,17 @@ const Package = () => {
               rec={item.rec}
               price={item.price}
               onClick={() => {
-                setPackages((prevPackages) =>
-                  prevPackages.map((pkg) =>
+                setPackages((prevPackages) => {
+                  const updatedPackages = prevPackages.map((pkg) =>
                     pkg.id === item.id
                       ? { ...pkg, isActive: true }
                       : { ...pkg, isActive: false }
-                  )
-                );
+                  );
+
+                  setSelectedPackage(item);
+
+                  return updatedPackages;
+                });
               }}
               isActive={item.isActive}
               cardType={item.cardType}
@@ -223,24 +237,25 @@ const Package = () => {
               setShowContent={() => toggleContent(item.id)}
               content={
                 <>
-                  {item?.content?.map((content) => (
-                    <div className="flex gap-3 items-center" key={content.id}>
-                      <div className="w-8 h-8 p-2 flex-shrink-0 flex items-center justify-center rounded-full bg-[#E8EDFB]">
-                        <img
-                          src={content.isActive ? contentA : contentX}
-                          alt=""
-                        />
-                      </div>
+                  {Array.isArray(item?.content) &&
+                    item?.content?.map((content) => (
+                      <div className="flex gap-3 items-center" key={content.id}>
+                        <div className="w-8 h-8 p-2 flex-shrink-0 flex items-center justify-center rounded-full bg-[#E8EDFB]">
+                          <img
+                            src={content.isActive ? contentA : contentX}
+                            alt=""
+                          />
+                        </div>
 
-                      <p
-                        className={`text-sm ${
-                          content.isActive ? "text-dark" : "text-[#A0ABBB]"
-                        }  leading-4 font-roboto text-medium`}
-                      >
-                        {content?.text}
-                      </p>
-                    </div>
-                  ))}
+                        <p
+                          className={`text-sm ${
+                            content.isActive ? "text-dark" : "text-[#A0ABBB]"
+                          }  leading-4 font-roboto text-medium`}
+                        >
+                          {content?.text}
+                        </p>
+                      </div>
+                    ))}
                 </>
               }
               background={item.background}
@@ -248,7 +263,7 @@ const Package = () => {
           ))}
         </div>
         <div className="mt-[32px]" />
-        <PageSwitcher next="/ein"  />
+        <PageSwitcher next="/ein" />
       </div>
     </section>
   );

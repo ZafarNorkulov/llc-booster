@@ -11,22 +11,6 @@ const CompanyInfo = () => {
   const [form] = Form.useForm();
   const [showCompany, setShowCompany] = useState<string[]>([]);
   const [modalId, setModalId] = useState<number | null>(null);
-  const [submit, setSubmit] = useState<boolean>(false);
-
-  const onFinish = () => {
-    form
-      .validateFields()
-      .then(() => {
-        // Agar forma valid bo'lsa, sahifaga o'tadi
-        form.submit();
-        setSubmit(true);
-      })
-      .catch((errorInfo) => {
-        setSubmit(false);
-        // Agar forma valid bo'lmasa, xatolikni konsolda ko'rsatadi
-        console.error("Validate Failed:", errorInfo);
-      });
-  };
 
   const handleValuesChange = () => {
     const values = form.getFieldsValue(); // Formadagi barcha qiymatlarni oling
@@ -51,17 +35,22 @@ const CompanyInfo = () => {
             <Logo />
             <SectionTitle title="Company information" />
 
-            <Form size="large" form={form} onValuesChange={handleValuesChange}>
+            <Form
+              size="large"
+              form={form}
+              onValuesChange={handleValuesChange}
+              layout="vertical"
+            >
               <Form.Item
                 name={"comp_info"}
-                rules={[{required:true,message:"Required field"}]}
+                rules={[{ required: true, message: "Required field" }]}
                 label={
                   <div
                     className="flex items-center gap-1"
                     onClick={() => toggleModal(1)}
                   >
                     <span>Company name</span>
-                    <img src={warning} className="w-4 h-4" />
+                    <img src={warning} className="w-4 h-4 cursor-pointer" />
                   </div>
                 }
               >
@@ -69,8 +58,7 @@ const CompanyInfo = () => {
               </Form.Item>
               <Form.Item
                 name={"designator"}
-                rules={[{required:true,message:"Required field"}]}
-
+                rules={[{ required: true, message: "Required field" }]}
                 label={
                   <div
                     className="flex items-center gap-1"
@@ -127,10 +115,7 @@ const CompanyInfo = () => {
             desc="As required by the state, it is necessary to include a designation in the company name. Please select one of the provided options"
             setOpen={() => toggleModal(null)}
           />
-          <PageSwitcher
-            next={submit ? "/form/contact" : "/form/company-info"}
-            onClick={onFinish}
-          />
+          <PageSwitcher next={"/form/contact"} />
         </div>
       </div>
     </section>

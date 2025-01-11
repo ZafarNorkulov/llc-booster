@@ -112,11 +112,11 @@ const BusinessBank = () => {
           By clicking Select, you authorize Bank of America, N.A. to contact you
           to discuss small business products and services.
         </p>
-        <div className="border border-[#979C9E] border-dashed my-4" />
+        <div className="border border-step border-dashed my-4" />
         <a className="text-primary text-sm underline w-full text-center block mb-8">
           No, thanks
         </a>
-        <PageSwitcher next="/form/free-accountant" />
+        <PageSwitcher next="/form/consultation" />
       </div>
     </section>
   );

@@ -6,26 +6,36 @@ import { useState } from "react";
 import "react-phone-input-2/lib/material.css";
 import PageSwitcher from "../../../components/pageSwitcher";
 import Logo from "../../../components/logo";
+import warning from "../../../assets/icons/Vector.svg";
+import CustomModal from "../../../components/modal";
 
 const ContactPerson = () => {
   const [phone, setPhone] = useState("");
   const [mention, setMention] = useState<string>("");
+  const [modalId, setModalId] = useState<number | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
- 
     const newValue = e.target.value.startsWith("@")
       ? e.target.value
       : `@${e.target.value}`;
     setMention(newValue);
   };
+
+  const toggleModal = (id: number | null) => {
+    setModalId((prevId) => (prevId === id ? null : id)); // Bir modal ochilsa, boshqasini yopish
+  };
   return (
-    <section >
+    <section>
       <div className="max-container min-h-screen">
         <Steps activeIndex={3} count={7} />
         <div className="sub-section">
-            <Logo />
-          <SectionTitle title="Contact Person" />{" "}
-          <Form size="large">
+          <Logo />
+          <SectionTitle
+            title="Contact Person"
+            element
+            onClick={() => toggleModal(1)}
+          />{" "}
+          <Form size="large" layout="vertical">
             <Form.Item
               name={"first_name"}
               label={
@@ -42,7 +52,18 @@ const ContactPerson = () => {
             <Form.Item name={"mail"} label={"E-mail"}>
               <Input type="email" allowClear />
             </Form.Item>
-            <Form.Item name={"Cell phone"} label={"E-mail"}>
+            <Form.Item
+              name={"Cell phone"}
+              label={
+                <div
+                  className="flex items-center gap-1"
+                  onClick={() => toggleModal(2)}
+                >
+                  <span>Cell phone</span>
+                  <img src={warning} className="w-4 h-4 cursor-pointer" />
+                </div>
+              }
+            >
               <PhoneInput
                 country={"ru"}
                 value={phone}
@@ -75,7 +96,19 @@ const ContactPerson = () => {
           <span className="text-lg leading-5 text-color2 max-w-[180px] mx-auto block text-center">
             We’ll keep your information private
           </span>
-          <PageSwitcher  next="/form/package" />
+          <PageSwitcher next="/form/package" />
+          <CustomModal
+            open={modalId === 1}
+            title="Contact Person"
+            desc="The contact person can be anyone (not necessarily a company founder) whom we can reach out to regarding your order or with special offers"
+            setOpen={() => toggleModal(null)}
+          />
+          <CustomModal
+            open={modalId === 2}
+            title="Cell phone "
+            desc="You will have the ability to opt out of texts after your order has been fulfilled"
+            setOpen={() => toggleModal(null)}
+          />
         </div>
       </div>
     </section>

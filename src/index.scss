@@ -11,6 +11,7 @@
 
 // pages
 body {
+  margin: 0 auto;
   font-family: "Inter", serif;
   background: white;
   @apply bg-blue-50;
@@ -19,8 +20,10 @@ body {
 section {
   min-height: 100vh;
 }
-.max-container {
-  @apply max-w-[420px] px-4 mx-auto py-3;
+@layer utilities {
+  .max-container {
+    @apply max-w-[420px] px-4 mx-auto py-3;
+  }
 }
 
 .home {
@@ -28,11 +31,7 @@ section {
     color: #96969e;
   }
 }
-// .ant-select-dropdown {
-//   width: 100% !important;
-//   max-width: 342px;
-//   top: 60px !important;
-// }
+
 .ein {
   .ant-radio-wrapper-checked {
     background: #fff;
@@ -74,6 +73,13 @@ section {
   }
 }
 
+.ant-radio-wrapper {
+  @apply border border-white bg-transparent;
+}
+.ant-radio-wrapper.ant-radio-wrapper-checked {
+  @apply border-color2 bg-white;
+}
+
 // some ant-styles
 
 .ant-form-item-required {
@@ -112,10 +118,24 @@ section {
 .special-label {
   display: none !important;
 }
+.ant-wave-target {
+  .ant-radio-inner {
+    background: transparent !important;
+    border-color: #979c9e !important;
+  }
+}
+.ant-wave-target.ant-radio-checked {
+  .ant-radio-inner {
+    background: #004cff !important;
+    border: #004cff !important;
+  }
+}
 
 // some styles
-.sub-section {
-  @apply border-2 border-white rounded-[35px]  px-[10px] box-border py-[14px] w-full;
+@layer utilities {
+  .sub-section {
+    @apply border-2 border-white rounded-[35px]  px-[10px] box-border py-[14px] w-full;
+  }
 }
 .modal {
   animation: modal-animation 0.3s ease-in-out;

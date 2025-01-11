@@ -26,7 +26,7 @@ const TransactionHistory = () => {
       <div className="flex items-center gap-2">
         <img src={transactions} />
         <div className="flex flex-col  ">
-          <span className="text-[10px] leading-3 text-[#979C9E]">{date}</span>
+          <span className="text-[10px] leading-3 text-step">{date}</span>
           <h5 className="font-bold text-sm leading-[18px] text-dark">
             {company}
           </h5>
@@ -37,7 +37,7 @@ const TransactionHistory = () => {
       </div>
       <div className="flex flex-col justify-between text-right">
         <div className="flex gap-1 items-center justify-end">
-          <span className="text-[10px] leading-3 text-[#979C9E]">Amount:</span>
+          <span className="text-[10px] leading-3 text-step">Amount:</span>
           <h4 className="font-bold leading-[21px]">-${amount}</h4>
         </div>
         <div

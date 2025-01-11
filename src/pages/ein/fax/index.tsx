@@ -19,9 +19,9 @@ const Fax = () => {
             <Logo />
           <SectionTitle title="Fill the form" />
           <Form size="large">
-            <Form.Item name={"company"} label="Select Company">
-              <Select allowClear>
-                <Select.Option>ssss</Select.Option>
+            <Form.Item  name={"company"} label="Select Company">
+              <Select allowClear defaultValue={"1"}>
+                <Select.Option value={"1"}>ssss</Select.Option>
               </Select>
             </Form.Item>
             <Form.Item name={"company_name"} label="Or enter Company Name">
@@ -64,7 +64,7 @@ const Fax = () => {
               label="The date the business was started or acquired"
             >
               <DatePicker
-                className="w-full text-[#979C9E]"
+                className="w-full text-step"
                 defaultValue={dayjs("2015/01/01", dateFormat)}
                 format={customFormat}
               />

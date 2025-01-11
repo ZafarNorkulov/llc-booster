@@ -206,7 +206,7 @@ const MyCompanies = () => {
 
           {/* Card3 */}
           <div className="p-2 bg-white flex flex-col gap-2 rounded-xl">
-            <h3 className="company-name  text-base leading-[22px] bg-[#979C9E] py-[10px] px-3 rounded-lg text-white font-bold">
+            <h3 className="company-name  text-base leading-[22px] bg-step py-[10px] px-3 rounded-lg text-white font-bold">
               DOG MARKET DOG
             </h3>
             <div className="flex gap-2">
@@ -216,7 +216,7 @@ const MyCompanies = () => {
               </div>
               <div className="pt-[10px] pb-4 rounded-lg flex flex-col justify-center items-center border border-[#E3E5E5] w-[50%]">
                 <h5 className="text-qestin font-medium">Status:</h5>
-                <span className="bg-[#979C9E] p-1 rounded-[10px] text-white text-sm font-medium">
+                <span className="bg-step p-1 rounded-[10px] text-white text-sm font-medium">
                   Draft (Incomplete)
                 </span>
               </div>

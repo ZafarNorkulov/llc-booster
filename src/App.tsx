@@ -21,13 +21,13 @@ import AddressForm from "./pages/form/address";
 import Members from "./pages/form/members";
 import NotFound from "./pages/notFound";
 import RegisterAgent from "./pages/form/register-agent";
-import OwnAgent from "./pages/form/agent/own-agent";
+import OwnAgent from "./pages/form/agent/my-own";
 import ProAgent from "./pages/form/agent/pro-agent";
 import BusinessBank from "./pages/form/business-bank";
+import OwnAgentRegister from "./pages/form/agent/my-own/register";
+import Consultation from "./pages/form/consultation";
 
 function App() {
-
-
   return (
     <>
       <Router>
@@ -49,8 +49,10 @@ function App() {
             <Route path="/form/members" element={<Members />} />
             <Route path="/form/register-agent" element={<RegisterAgent />} />
             <Route path="/form/my-own" element={<OwnAgent />} />
+            <Route path="/form/my-own/register" element={<OwnAgentRegister   />} />
             <Route path="/form/professional" element={<ProAgent />} />
             <Route path="/form/business-bank" element={<BusinessBank />} />
+            <Route path="/form/consultation" element={<Consultation />} />
             {/* Not found */}
             <Route path="/not-found" element={<NotFound />} />
             <Route path="*" element={<Navigate to={"/not-found"} />} />

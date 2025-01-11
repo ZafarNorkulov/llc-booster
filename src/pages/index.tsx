@@ -1,4 +1,4 @@
-import { Button, Select } from "antd";
+import { Select } from "antd";
 import { useState } from "react";
 import Logo from "../components/logo";
 import Hero from "../assets/banner.png";
@@ -11,6 +11,7 @@ import user from "../assets/icons/R-user.svg";
 import faq from "../assets/icons/faq.svg";
 import chat from "../assets/icons/Chat- Bubbles.svg";
 import { Link } from "react-router-dom";
+import check from "../assets/icons/select-check.svg";
 
 interface IOption {
   label: string;
@@ -21,12 +22,11 @@ interface IOption {
 const Home = () => {
   const [selectedValue, setSelectedValue] = useState<string>("EN");
   const [tempSelectedValue, setTempSelectedValue] = useState<string>("EN");
-  const [options] = useState<IOption[]>([
-    { label: "English (EN)", value: "EN", checked: false },
+  const [options, setOptions] = useState<IOption[]>([
+    { label: "English (EN)", value: "EN", checked: true },
     { label: "Uzbek (UZ)", value: "UZ", checked: false },
     { label: "Russian (RU)", value: "RU", checked: false },
   ]);
-  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false); // Initially keep dropdown open
   const [menus] = useState([
     {
       id: 1,
@@ -67,45 +67,62 @@ const Home = () => {
       startIndex !== -1 && endIndex !== -1
         ? value.substring(startIndex + 1, endIndex)
         : value;
-    setTempSelectedValue(extractedValue); // Update temporary selected value
+
+    setTempSelectedValue(extractedValue); // Update tempSelectedValue to extracted language code
+    const selectedOption = options.find(
+      (option) => option.value === extractedValue
+    );
+
+    if (selectedOption) {
+      setSelectedValue(selectedOption.label); // Update selectedValue to the corresponding label
+    }
+
+    setOptions((prevOptions) =>
+      prevOptions.map((option) =>
+        option.value === extractedValue
+          ? { ...option, checked: true }
+          : { ...option, checked: false }
+      )
+    );
   };
   const { Option } = Select;
 
-  const handleSave = () => {
-    setSelectedValue(tempSelectedValue); // Save selected value
-    setDropdownOpen(false); // Close dropdown after saving
-  };
-
   return (
     <div className="home max-container w-full">
-      <div className=" flex justify-between items-center w-full">
+      <div className="relative flex justify-between items-center w-full">
         <div></div>
         <Logo />
         <Select
+          value={tempSelectedValue}
+          onChange={handleChange}
           defaultValue={selectedValue}
           placeholder="Language"
-          onChange={handleChange}
-          value={tempSelectedValue} // Bind tempSelectedValue
-          className="text-slate-500"
-          open={dropdownOpen} // Control dropdown visibility
-          onDropdownVisibleChange={(open) => setDropdownOpen(open)} // Update visibility state
-          dropdownRender={(menu) => (
-            <div className="">
-              {menu}
-              <Button
-                type="primary"
-                size="large"
-                className="w-full"
-                onClick={handleSave} // Save on button click
-              >
-                Save
-              </Button>
-            </div>
-          )}
+          className="text-slate-500 w-[70px]"
+          dropdownStyle={{
+            width: "100%",
+            maxWidth: "92%",
+            top: "60px",
+            boxShadow:
+              "0px 9px 28px 8px #0000000D,0px 6px 16px 0px #00000014,0px 3px 6px -4px #0000001F",
+          }}
         >
           {options?.map((item) => (
-            <Option key={item.value} value={item.value}>
-              <div className="flex justify-between ">{item.label}</div>
+            <Option key={item.value} value={item.label}>
+              <div className="flex justify-between ">
+                <span className="text-sm font-medium font-roboto leading-[22px] text-dark">
+                  {item.label}
+                </span>
+                <span
+                  className="flex items-center justify-center w-[22px] h-[22px] rounded-full"
+                  style={
+                    item.checked
+                      ? { background: "#0499F6" }
+                      : { background: "#E3E5E5" }
+                  }
+                >
+                  <img src={check} />
+                </span>
+              </div>
             </Option>
           ))}
         </Select>

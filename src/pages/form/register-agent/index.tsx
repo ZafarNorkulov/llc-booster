@@ -7,23 +7,53 @@ import doc from "../../../assets/icons/register-doc.png";
 import home from "../../../assets/icons/register-home.png";
 import user from "../../../assets/icons/register-user.png";
 import PageSwitcher from "../../../components/pageSwitcher";
+import warningWhite from "../../../assets/icons/Vector-white.svg";
+import CustomModal from "../../../components/modal";
 
 const RegisterAgent = () => {
+  const [modalId, setModalId] = useState<number | null>(null);
   const [packages, setPackages] = useState<ICardDefinition[]>([
     {
       id: 1,
       isActive: true,
       title: "Use My Own Agent",
-      cardType: "year",
+      cardType: "",
       background: ["#36D1DC", "#5B86E5"],
     },
     {
       id: 2,
       isActive: false,
-      title: "Professional agent Service",
+      title: (
+        <div className="inline-flex gap-1">
+          <h1 className="text-2xl ">
+            Professional agent <br />{" "}
+            <span className="inline-flex items-center gap-1">Service</span>
+          </h1>
+        </div>
+      ),
       price: "FREE",
-      pro: true,
-      cardType: "year",
+      pro: (
+        <div className="flex items-center gap-1">
+          <span className="text-xs font-medium">Premium</span>
+          <img
+            src={warningWhite}
+            className="w-4 h-4 cursor-pointer"
+            onClick={() => toggleModal(2)}
+          />
+        </div>
+      ),
+      cardType: (
+        <div className="flex gap-1 items-center">
+          <span className="text-base font-medium leading-[35px] text-white">
+            for 1 year
+          </span>
+          <img
+            src={warningWhite}
+            className="w-4 h-4 cursor-pointer"
+            onClick={() => toggleModal(3)}
+          />
+        </div>
+      ),
       background: ["#FF5858", "#F857A6"],
     },
   ]);
@@ -48,11 +78,18 @@ const RegisterAgent = () => {
   ]);
   const activeCardId = packages.filter((item) => item.isActive)[0].id;
 
+  const toggleModal = (id: number | null) => {
+    setModalId((prevId) => (prevId === id ? null : id));
+  };
   return (
     <section>
       <div className="max-container">
         <Logo />
-        <SectionTitle element title="Registered Agent" />
+        <SectionTitle
+          element
+          title="Registered Agent"
+          onClick={() => toggleModal(1)}
+        />
         <p className="text-dark text-base font-bold text-center">
           Why a Registered Agent is needed:
         </p>
@@ -94,6 +131,24 @@ const RegisterAgent = () => {
         </div>
         <PageSwitcher
           next={activeCardId == 1 ? "/form/my-own" : "/form/professional"}
+        />
+        <CustomModal
+          open={modalId === 1}
+          title="Registered"
+          desc="A Registered Agent is an individual or company appointed to receive official documents on behalf of the LLC. They must be available at a registered address during business hours and be located in the same state where the LLC is registered"
+          setOpen={() => toggleModal(null)}
+        />
+        <CustomModal
+          open={modalId === 2}
+          title="Free for 1 year"
+          desc="1 year free from the date of LLC registration, starting from the following years, a fee of $125/year will be charged"
+          setOpen={() => toggleModal(null)}
+        />
+        <CustomModal
+          open={modalId === 3}
+          title="Own Agent"
+          desc="A registered agent can be any individual with the legal right to work in the U.S. or a company that has a physical address (It can’t be a PO Box or PMB) in the state where the LLC is registered and is available during business hours"
+          setOpen={() => toggleModal(null)}
         />
       </div>
     </section>

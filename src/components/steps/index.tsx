@@ -22,7 +22,7 @@ const Steps = ({
           />
         ))}
       </div>
-      <span className="text-lg font-medium text-right text-[#979C9E]">
+      <span className="text-lg font-medium text-right text-step">
         Step {activeIndex}
       </span>
     </div>

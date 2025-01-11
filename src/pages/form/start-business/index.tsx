@@ -1,11 +1,12 @@
 import SectionTitle from "../../../components/sectionTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, Input, Select } from "antd";
 import PageSwitcher from "../../../components/pageSwitcher";
 import Steps from "../../../components/steps";
 import CustomModal from "../../../components/modal";
 import Logo from "../../../components/logo";
 import warning from "../../../assets/icons/Vector.svg";
+import { useNavigate } from "react-router-dom";
 
 interface TState {
   id: number;
@@ -52,7 +53,6 @@ const StartBusiness = () => {
   const [form] = Form.useForm();
   const [selectedState, setSelectedState] = useState<TState | null>(null);
   const [selectedOrg, setSelectedOrg] = useState<TState | null>(null);
-  const [submit, setSubmit] = useState(false);
   const handleSelectState = (value: TState) => {
     setSelectedState(value);
     const elements = [...state];
@@ -81,6 +81,7 @@ const StartBusiness = () => {
 
     setOrganizations(check_orgs);
   };
+  const navigate = useNavigate();
 
   const onFinish = () => {
     form
@@ -88,14 +89,26 @@ const StartBusiness = () => {
       .then(() => {
         // Agar forma valid bo'lsa, sahifaga o'tadi
         form.submit();
-        setSubmit(true);
+        navigate("/form/company-info");
       })
       .catch((errorInfo) => {
-        setSubmit(false);
         // Agar forma valid bo'lmasa, xatolikni konsolda ko'rsatadi
         console.error("Validate Failed:", errorInfo);
       });
   };
+  useEffect(() => {
+    if (selectedState && selectedState?.title) {
+      const myState = selectedState.title;
+
+      sessionStorage.setItem("state", myState);
+    }
+  }, [selectedState]);
+  useEffect(() => {
+    if (selectedOrg && selectedOrg?.title) {
+      const myOrg = selectedOrg?.title;
+      sessionStorage.setItem("organization_type", myOrg);
+    }
+  }, [selectedOrg]);
 
   return (
     <section className=" start-business">
@@ -104,7 +117,7 @@ const StartBusiness = () => {
         <div className="min-h-[calc(100vh-72px)] sub-section">
           <Logo />
           <SectionTitle title="Start your business with confidence" />
-          <Form form={form} size="large" >
+          <Form form={form} size="large" layout="vertical">
             <Form.Item
               name="state"
               hasFeedback
@@ -117,7 +130,6 @@ const StartBusiness = () => {
                 className="w-full "
                 placeholder="State"
                 value={selectedState?.title}
-              
               >
                 {state.map((item) => (
                   <Select.Option key={item.id}>
@@ -175,14 +187,14 @@ const StartBusiness = () => {
                 </div>
               }
               rules={[{ required: true, message: "Required field" }]}
+              validateStatus={
+                form.getFieldError("business").length > 0 ? "error" : ""
+              }
             >
               <Input type="text" />
             </Form.Item>
           </Form>
-          <PageSwitcher
-            next={submit ? "/form/company-info" : "/form/start-business"}
-            onClick={onFinish}
-          />
+          <PageSwitcher next={"/form/company-info"} onClick={onFinish} />
         </div>
         <CustomModal
           open={openModal}

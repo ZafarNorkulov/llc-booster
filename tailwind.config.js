@@ -12,6 +12,7 @@ export default {
         questin: "#5D5D5D",
         gray: "#FAFBFB",
         color2: "#004CFF",
+        step: "#979C9E",
       },
       fontFamily: {
         roboto: ["Roboto", "serif"],
