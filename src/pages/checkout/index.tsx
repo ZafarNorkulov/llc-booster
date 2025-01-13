@@ -4,7 +4,9 @@ import arrowRight from "../../assets/icons/iconamoon_arrow-up-2.svg";
 import { Button } from "antd";
 
 const Checkout = () => {
+
   const navigate = useNavigate();
+  
   return (
     <section>
       <div className="max-container">
