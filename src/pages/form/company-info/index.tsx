@@ -77,8 +77,8 @@ const CompanyInfo = () => {
                   options={designators}
                   setOptions={setDesignators}
                 /> */}
-                <Select>
-                  <Select.Option placeholder="Choose a designator">
+                <Select placeholder="Choose a designator">
+                  <Select.Option value="ss">
                     sdf
                   </Select.Option>
                 </Select>
