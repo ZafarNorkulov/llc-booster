@@ -81,8 +81,8 @@ const StartBusiness = () => {
               }
             >
               {/* <MySelect placeholder="State" options={state} setOptions={setState} /> */}
-              <Select placeholder="State">
-                <Select.Option>Arizona</Select.Option>
+              <Select placeholder="State" >
+                <Select.Option value="arizona">Arizona</Select.Option>
               </Select>
             </Form.Item>
             <Form.Item
@@ -99,7 +99,7 @@ const StartBusiness = () => {
                 setOptions={setOrganizations}
               /> */}
               <Select placeholder="Organization type">
-                <Select.Option>dsgg</Select.Option>
+                <Select.Option value="dss">dsgg</Select.Option>
               </Select>
             </Form.Item>
             <Form.Item
