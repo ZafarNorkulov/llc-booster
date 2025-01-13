@@ -13,6 +13,7 @@ export default {
         gray: "#FAFBFB",
         color2: "#004CFF",
         step: "#979C9E",
+        "mini-app": "#96969E",
       },
       fontFamily: {
         roboto: ["Roboto", "serif"],

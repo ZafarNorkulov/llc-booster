@@ -23,19 +23,19 @@ import NotFound from "./pages/notFound";
 import RegisterAgent from "./pages/form/register-agent";
 import OwnAgent from "./pages/form/agent/my-own";
 import ProAgent from "./pages/form/agent/pro-agent";
-import BusinessBank from "./pages/form/business-bank";
+import BusinessBank from "./pages/business-bank";
 import OwnAgentRegister from "./pages/form/agent/my-own/register";
-import Consultation from "./pages/form/consultation";
+import Consultation from "./pages/business-bank/consultation";
 import { useEffect } from "react";
+import Checkout from "./pages/checkout";
 
 function App() {
   useEffect(() => {
     const tg = (window as any).Telegram.WebApp;
 
-    tg.ready()
+    tg.ready();
     console.log("Foydalanuvchi:", tg.initDataUnsafe?.user);
   }, []);
-
 
   return (
     <>
@@ -63,8 +63,9 @@ function App() {
               element={<OwnAgentRegister />}
             />
             <Route path="/form/professional" element={<ProAgent />} />
-            <Route path="/form/business-bank" element={<BusinessBank />} />
-            <Route path="/form/consultation" element={<Consultation />} />
+            <Route path="/business-bank" element={<BusinessBank />} />
+            <Route path="/consultation" element={<Consultation />} />
+            <Route path="/checkout" element={<Checkout />} />
             {/* Not found */}
             <Route path="/not-found" element={<NotFound />} />
             <Route path="*" element={<Navigate to={"/not-found"} />} />
@@ -79,8 +80,9 @@ function App() {
 function LocationDisplay() {
   const location = useLocation();
   const isFormPath = location.pathname.includes("/form");
+  const isCheckout = location.pathname.includes("/checkout");
   const isNotFound = location.pathname?.includes("/not-found");
-  if (!(isFormPath || isNotFound)) {
+  if (!(isFormPath || isNotFound || isCheckout)) {
     return (
       <span className="block w-max mx-auto text-[13px] text-[#090A0A] mb-2 mt-[23px]">
         @LLC Booster.LLC

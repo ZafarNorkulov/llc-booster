@@ -186,7 +186,7 @@ const ProAgent = () => {
             </div>
           </div>
           <PageSwitcher
-            next="/form/business-bank"
+            next="/business-bank"
           />
         </div>
       </div>

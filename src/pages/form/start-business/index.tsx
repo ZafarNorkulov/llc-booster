@@ -1,86 +1,54 @@
 import SectionTitle from "../../../components/sectionTitle";
-import { useEffect, useState } from "react";
-import { Form, Input, Select } from "antd";
+import { useState } from "react";
+import { Form, Input } from "antd";
 import PageSwitcher from "../../../components/pageSwitcher";
 import Steps from "../../../components/steps";
 import CustomModal from "../../../components/modal";
 import Logo from "../../../components/logo";
 import warning from "../../../assets/icons/Vector.svg";
 import { useNavigate } from "react-router-dom";
+import MySelect from "../../../components/select";
+import { TSelectData } from "../../../types/data.models";
 
-interface TState {
-  id: number;
-  title: string;
-  status: boolean;
-}
 
 const StartBusiness = () => {
-  const [state, setState] = useState<TState[]>([
+  const [state, setState] = useState<TSelectData[]>([
     {
       id: 1,
-      title: "Alabama",
-      status: false,
+      label: "Alabama",
+      checked: false,
     },
     {
       id: 2,
-      title: "Alaska",
-      status: false,
+      label: "Alaska",
+      checked: false,
     },
     {
       id: 3,
-      title: "Arizona",
-      status: false,
+      label: "Arizona",
+      checked: false,
     },
   ]);
-  const [organizations, setOrganizations] = useState<TState[]>([
+  const [organizations, setOrganizations] = useState<TSelectData[]>([
     {
       id: 1,
-      title: "LLC",
-      status: false,
+      label: "LLC",
+      checked: false,
     },
     {
       id: 2,
-      title: "S-Corporation",
-      status: false,
+      label: "S-Corporation",
+      checked: false,
     },
     {
       id: 3,
-      title: "C-Corporation",
-      status: false,
+      label: "C-Corporation",
+      checked: false,
     },
   ]);
   const [openModal, setOpenModal] = useState(false);
   const [form] = Form.useForm();
-  const [selectedState, setSelectedState] = useState<TState | null>(null);
-  const [selectedOrg, setSelectedOrg] = useState<TState | null>(null);
-  const handleSelectState = (value: TState) => {
-    setSelectedState(value);
-    const elements = [...state];
-    elements.forEach((el) => {
-      el.status = false;
-    });
-    const check_elements = elements?.map((item) =>
-      item.id === value.id
-        ? { ...item, status: true }
-        : { ...item, status: false }
-    );
 
-    setState(check_elements);
-  };
-  const handleSelectOrg = (value: TState) => {
-    setSelectedOrg(value);
-    const elements = [...organizations];
-    elements.forEach((el) => {
-      el.status = false;
-    });
-    const check_orgs = elements?.map((item) =>
-      item.id === value.id
-        ? { ...item, status: true }
-        : { ...item, status: false }
-    );
-
-    setOrganizations(check_orgs);
-  };
   const navigate = useNavigate();
 
   const onFinish = () => {
@@ -96,19 +64,6 @@ const StartBusiness = () => {
         console.error("Validate Failed:", errorInfo);
       });
   };
-  useEffect(() => {
-    if (selectedState && selectedState?.title) {
-      const myState = selectedState.title;
-
-      sessionStorage.setItem("state", myState);
-    }
-  }, [selectedState]);
-  useEffect(() => {
-    if (selectedOrg && selectedOrg?.title) {
-      const myOrg = selectedOrg?.title;
-      sessionStorage.setItem("organization_type", myOrg);
-    }
-  }, [selectedOrg]);
 
   return (
     <section className=" start-business">
@@ -126,25 +81,7 @@ const StartBusiness = () => {
                 form.getFieldError("state").length > 0 ? "error" : ""
               }
             >
-              <Select
-                className="w-full "
-                placeholder="State"
-                value={selectedState?.title}
-              >
-                {state.map((item) => (
-                  <Select.Option key={item.id}>
-                    <div
-                      className="select flex justify-between items-center"
-                      onClick={() => handleSelectState(item)}
-                    >
-                      <span className="text-sm font-medium leading-[22px] text-dark">
-                        {item.title}
-                      </span>
-                      {/* {item.status ? "i" : "a"} */}
-                    </div>
-                  </Select.Option>
-                ))}
-              </Select>
+              <MySelect placeholder="State" options={state} setOptions={setState} />
             </Form.Item>
             <Form.Item
               hasFeedback
@@ -154,25 +91,7 @@ const StartBusiness = () => {
                 form.getFieldError("organization").length > 0 ? "error" : ""
               }
             >
-              <Select
-                className="w-full "
-                placeholder="Organization type"
-                value={selectedOrg?.title}
-              >
-                {organizations.map((item) => (
-                  <Select.Option key={item.id}>
-                    <div
-                      className="flex justify-between items-center "
-                      onClick={() => handleSelectOrg(item)}
-                    >
-                      <span className="text-sm font-medium leading-[22px] text-dark">
-                        {item.title}
-                      </span>
-                      {/* {item.status ? "i" : "a"} */}
-                    </div>
-                  </Select.Option>
-                ))}
-              </Select>
+              <MySelect placeholder="Organization type" options={organizations} setOptions={setOrganizations} />
             </Form.Item>
             <Form.Item
               name={"business"}

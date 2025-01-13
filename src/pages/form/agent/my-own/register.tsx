@@ -4,7 +4,6 @@ import { StringObject } from "../../../../types/data.models";
 import PageSwitcher from "../../../../components/pageSwitcher";
 import Steps from "../../../../components/steps";
 import SectionTitle from "../../../../components/sectionTitle";
-import { States } from "../../../../constants";
 
 const OwnAgentRegister = () => {
   const [radioVal, setRadioVal] = useState("Individual");
@@ -92,16 +91,16 @@ const OwnAgentRegister = () => {
             </Form.Item>
             <Form.Item label="State">
               <Select placeholder="State">
-                {States?.map((item) => (
+                {/* {States?.map((item) => (
                   <Select.Option value={item.id}>{item.name}</Select.Option>
-                ))}
+                ))} */}
               </Select>
             </Form.Item>
             <Form.Item label="ZipCode">
               <Input placeholder="12345" />
             </Form.Item>
           </Form>
-          <PageSwitcher next="/form/business-bank" onClick={handleClick} />
+          <PageSwitcher next="/business-bank" onClick={handleClick} />
         </div>
       </div>
     </section>

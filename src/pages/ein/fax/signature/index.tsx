@@ -50,7 +50,7 @@ const Signature = () => {
             <Button
               onClick={clearSignature}
               type="text"
-              className="bg-[#96969E] text-white"
+              className="bg-mini-app text-white"
             >
               Clear
             </Button>

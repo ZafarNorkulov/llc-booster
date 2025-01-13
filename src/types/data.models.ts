@@ -25,3 +25,9 @@ export interface ICardContent {
 export type StringObject = {
   [key: string]: string;
 };
+
+export type TSelectData = {
+  id:number,
+  label:string,
+  checked:boolean
+};

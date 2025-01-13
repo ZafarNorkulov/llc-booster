@@ -95,6 +95,11 @@ section {
     height: max-content !important;
   }
 }
+.ant-select-selection-item {
+  .select-icon {
+    display: none !important;
+  }
+}
 
 .ant-select-dropdown {
   span {

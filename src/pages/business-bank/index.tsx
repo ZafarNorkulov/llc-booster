@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import arrow from "../../../assets/icons/arrow-right.svg";
-import SectionTitle from "../../../components/sectionTitle";
-import americanBank from "../../../assets/icons/american-bank.svg";
-import citigroup from "../../../assets/icons/citigroup.svg";
-import elOk from "../../../assets/icons/el_ok.svg";
-import PageSwitcher from "../../../components/pageSwitcher";
+import PageSwitcher from "../../components/pageSwitcher";
+import arrow from "../../assets/icons/arrow-right.svg";
+import SectionTitle from "../../components/sectionTitle";
+import americanBank from "../../assets/icons/american-bank.svg";
+import citigroup from "../../assets/icons/citigroup.svg";
+import elOk from "../../assets/icons/el_ok.svg";
 
 interface ICard {
   id: number;
@@ -116,7 +116,7 @@ const BusinessBank = () => {
         <a className="text-primary text-sm underline w-full text-center block mb-8">
           No, thanks
         </a>
-        <PageSwitcher next="/form/consultation" />
+        <PageSwitcher next="/consultation" />
       </div>
     </section>
   );

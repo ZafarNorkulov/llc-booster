@@ -1,6 +1,6 @@
 import SectionTitle from "../../../components/sectionTitle";
 import Steps from "../../../components/steps";
-import { Form, Input, Select } from "antd";
+import { Form, Input } from "antd";
 import PageSwitcher from "../../../components/pageSwitcher";
 import Logo from "../../../components/logo";
 import warning from "../../../assets/icons/Vector.svg";
@@ -8,11 +8,49 @@ import CustomModal from "../../../components/modal";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { StringObject } from "../../../types/data.models";
-import { States } from "../../../constants";
+
+import MySelect from "../../../components/select";
 
 const AddressForm = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isFillForm, setIsFillForm] = useState<StringObject>({});
+  const [states, setStates] = useState([
+    {
+      id: 1,
+      label: "Alabama",
+      checked: false,
+    },
+    {
+      id: 2,
+      label: "Alaska",
+      checked: false,
+    },
+    {
+      id: 3,
+      label: "Arizona",
+      checked: false,
+    },
+    {
+      id: 4,
+      label: "Arkansas",
+      checked: false,
+    },
+    {
+      id: 5,
+      label: "California",
+      checked: false,
+    },
+    {
+      id: 6,
+      label: "Colorado",
+      checked: false,
+    },
+    {
+      id: 7,
+      label: "Connecticut",
+      checked: false,
+    },
+  ]);
 
   const [form] = Form.useForm();
   const navigate = useNavigate();
@@ -82,13 +120,7 @@ const AddressForm = () => {
               name={"state"}
               rules={[{ required: true, message: "Required field" }]}
             >
-              <Select>
-                {States?.map((item) => (
-                  <Select.Option key={item.id} value={item.name}>
-                    {item.name}
-                  </Select.Option>
-                ))}
-              </Select>
+              <MySelect options={states} setOptions={setStates} />
             </Form.Item>
             <Form.Item
               label="ZipCode"

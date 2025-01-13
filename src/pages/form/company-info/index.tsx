@@ -1,16 +1,19 @@
 import { useState } from "react";
 import SectionTitle from "../../../components/sectionTitle";
-import { Button, Form, Input, Select } from "antd";
+import { Button, Form, Input } from "antd";
 import PageSwitcher from "../../../components/pageSwitcher";
 import Steps from "../../../components/steps";
 import Logo from "../../../components/logo";
 import warning from "../../../assets/icons/Vector.svg";
 import CustomModal from "../../../components/modal";
+import MySelect from "../../../components/select";
+import { TSelectData } from "../../../types/data.models";
 
 const CompanyInfo = () => {
   const [form] = Form.useForm();
   const [showCompany, setShowCompany] = useState<string[]>([]);
   const [modalId, setModalId] = useState<number | null>(null);
+  const [designators, setDesignators] = useState<TSelectData[]>([]);
 
   const handleValuesChange = () => {
     const values = form.getFieldsValue(); // Formadagi barcha qiymatlarni oling
@@ -69,15 +72,12 @@ const CompanyInfo = () => {
                   </div>
                 }
               >
-                <Select placeholder="Choose a designator">
-                  <Select.Option value={"LLC"}>
-                    <div className="flex justify-between items-center">
-                      <span>LLC</span>
-                    </div>
-                  </Select.Option>
-                </Select>
+                <MySelect
+                  placeholder="Choose a designator"
+                  options={designators}
+                  setOptions={setDesignators}
+                />
               </Form.Item>
-              {/* <Button title="111"  type="primary"/> */}
             </Form>
             {showCompany.length ? (
               <div className="flex flex-col gap-4 w-full justify-center items-center mt-[30px]">

@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import arrow from "../../../assets/icons/arrow-right.svg";
+import arrow from "../../assets/icons/arrow-right.svg";
 import { useState } from "react";
-import PageSwitcher from "../../../components/pageSwitcher";
-import CustomModal from "../../../components/modal";
-import warning from "../../../assets/icons/Vector.svg";
-import consult from "../../../assets/icons/consult.png";
-import llc from "../../../assets/icons/llc.png";
-import keyRules from "../../../assets/icons/key-rules.png";
-import credit from "../../../assets/icons/credit.png";
-import payroll from "../../../assets/icons/payroll.png";
-import maintain from "../../../assets/icons/maintain.png";
+import PageSwitcher from "../../components/pageSwitcher";
+import CustomModal from "../../components/modal";
+import warning from "../../assets/icons/Vector.svg";
+import consult from "../../assets/icons/consult.png";
+import llc from "../../assets/icons/llc.png";
+import keyRules from "../../assets/icons/key-rules.png";
+import credit from "../../assets/icons/credit.png";
+import payroll from "../../assets/icons/payroll.png";
+import maintain from "../../assets/icons/maintain.png";
 import { Radio } from "antd";
 
 const Consultation = () => {
@@ -106,7 +106,7 @@ const Consultation = () => {
             By clicking Select, you authorize Bank of America, N.A. to contact
             you to discuss small business products and services.
           </p>
-          <PageSwitcher next="" />
+          <PageSwitcher next="/checkout" />
           <CustomModal
             open={open}
             setOpen={setOpen}

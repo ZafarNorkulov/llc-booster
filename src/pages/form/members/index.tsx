@@ -8,7 +8,6 @@ import warning from "../../../assets/icons/Vector.svg";
 import CustomModal from "../../../components/modal";
 import { StringObject } from "../../../types/data.models";
 import ConfirmModal from "../../../components/modal/confirmModal";
-import { States } from "../../../constants";
 import { useNavigate } from "react-router-dom";
 
 const Members = () => {
@@ -218,9 +217,9 @@ const Members = () => {
             </Form.Item>
             <Form.Item label="State">
               <Select placeholder="State">
-                {States?.map((item) => (
+                {/* {States.map((item) => (
                   <Select.Option value={item.id}>{item.name}</Select.Option>
-                ))}
+                ))} */}
               </Select>
             </Form.Item>
             <Form.Item label="ZipCode">

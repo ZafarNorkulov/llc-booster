@@ -1,28 +1,35 @@
 import SectionTitle from "../../../components/sectionTitle";
-import { DatePicker, DatePickerProps, Form, Input, Select } from "antd";
+import { DatePicker, DatePickerProps, Form, Input } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import PageSwitcher from "../../../components/pageSwitcher";
 import Steps from "../../../components/steps";
 import Logo from "../../../components/logo";
+import MySelect from "../../../components/select";
+import { useState } from "react";
 
 const Fax = () => {
   dayjs.extend(customParseFormat);
   const dateFormat = "DD.MM.YYYY";
   const customFormat: DatePickerProps["format"] = (value) =>
     `${value.format(dateFormat)}`;
+  const [options, setOptions] = useState([
+    { id: 1, label: "LLC", checked: true },
+    { id: 2, label: "hfdLLC", checked: false },
+  ]);
   return (
     <section className="fax">
       <div className="max-container">
-       <Steps activeIndex={1} count={2}/>
+        <Steps activeIndex={1} count={2} />
         <div className="sub-section">
-            <Logo />
+          <Logo />
           <SectionTitle title="Fill the form" />
-          <Form size="large">
-            <Form.Item  name={"company"} label="Select Company">
-              <Select allowClear defaultValue={"1"}>
-                <Select.Option value={"1"}>ssss</Select.Option>
-              </Select>
+          <Form size="large" layout="vertical">
+            <Form.Item name={"company"} label="Select Company">
+              <MySelect
+                options={options}
+                setOptions={setOptions}
+              />
             </Form.Item>
             <Form.Item name={"company_name"} label="Or enter Company Name">
               <Input type="text" />
