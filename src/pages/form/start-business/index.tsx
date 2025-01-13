@@ -1,51 +1,50 @@
 import SectionTitle from "../../../components/sectionTitle";
 import { useState } from "react";
-import { Form, Input } from "antd";
+import { Form, Input, Select } from "antd";
 import PageSwitcher from "../../../components/pageSwitcher";
 import Steps from "../../../components/steps";
 import CustomModal from "../../../components/modal";
 import Logo from "../../../components/logo";
 import warning from "../../../assets/icons/Vector.svg";
 import { useNavigate } from "react-router-dom";
-import MySelect from "../../../components/select";
-import { TSelectData } from "../../../types/data.models";
-
+// import MySelect from "../../../components/select";
+// import { TSelectData } from "../../../types/data.models";
 
 const StartBusiness = () => {
-  const [state, setState] = useState<TSelectData[]>([
-    {
-      id: 1,
-      label: "Alabama",
-      checked: false,
-    },
-    {
-      id: 2,
-      label: "Alaska",
-      checked: false,
-    },
-    {
-      id: 3,
-      label: "Arizona",
-      checked: false,
-    },
-  ]);
-  const [organizations, setOrganizations] = useState<TSelectData[]>([
-    {
-      id: 1,
-      label: "LLC",
-      checked: false,
-    },
-    {
-      id: 2,
-      label: "S-Corporation",
-      checked: false,
-    },
-    {
-      id: 3,
-      label: "C-Corporation",
-      checked: false,
-    },
-  ]);
+  // const [state, setState] = useState<TSelectData[]>([
+  //   {
+  //     id: 1,
+  //     label: "Alabama",
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 2,
+  //     label: "Alaska",
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 3,
+  //     label: "Arizona",
+  //     checked: false,
+  //   },
+  // ]);
+  // const [organizations, setOrganizations] = useState<TSelectData[]>([
+  //   {
+  //     id: 1,
+  //     label: "LLC",
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 2,
+  //     label: "S-Corporation",
+  //     checked: false,
+  //   },
+  //   {
+  //     id: 3,
+  //     label: "C-Corporation",
+  //     checked: false,
+  //   },
+  // ]);
   const [openModal, setOpenModal] = useState(false);
   const [form] = Form.useForm();
 
@@ -81,7 +80,10 @@ const StartBusiness = () => {
                 form.getFieldError("state").length > 0 ? "error" : ""
               }
             >
-              <MySelect placeholder="State" options={state} setOptions={setState} />
+              {/* <MySelect placeholder="State" options={state} setOptions={setState} /> */}
+              <Select placeholder="State">
+                <Select.Option>Arizona</Select.Option>
+              </Select>
             </Form.Item>
             <Form.Item
               hasFeedback
@@ -91,7 +93,14 @@ const StartBusiness = () => {
                 form.getFieldError("organization").length > 0 ? "error" : ""
               }
             >
-              <MySelect placeholder="Organization type" options={organizations} setOptions={setOrganizations} />
+              {/* <MySelect
+                placeholder="Organization type"
+                options={organizations}
+                setOptions={setOrganizations}
+              /> */}
+              <Select placeholder="Organization type">
+                <Select.Option>dsgg</Select.Option>
+              </Select>
             </Form.Item>
             <Form.Item
               name={"business"}

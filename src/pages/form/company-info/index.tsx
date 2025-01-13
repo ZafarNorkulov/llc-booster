@@ -1,19 +1,19 @@
 import { useState } from "react";
 import SectionTitle from "../../../components/sectionTitle";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Select } from "antd";
 import PageSwitcher from "../../../components/pageSwitcher";
 import Steps from "../../../components/steps";
 import Logo from "../../../components/logo";
 import warning from "../../../assets/icons/Vector.svg";
 import CustomModal from "../../../components/modal";
-import MySelect from "../../../components/select";
-import { TSelectData } from "../../../types/data.models";
+// import MySelect from "../../../components/select";
+// import { TSelectData } from "../../../types/data.models";
 
 const CompanyInfo = () => {
   const [form] = Form.useForm();
   const [showCompany, setShowCompany] = useState<string[]>([]);
   const [modalId, setModalId] = useState<number | null>(null);
-  const [designators, setDesignators] = useState<TSelectData[]>([]);
+  // const [designators, setDesignators] = useState<TSelectData[]>([]);
 
   const handleValuesChange = () => {
     const values = form.getFieldsValue(); // Formadagi barcha qiymatlarni oling
@@ -72,11 +72,17 @@ const CompanyInfo = () => {
                   </div>
                 }
               >
-                <MySelect
+                {/* <MySelect
                   placeholder="Choose a designator"
                   options={designators}
                   setOptions={setDesignators}
-                />
+                /> */}
+                <Select>
+                  <Select.Option placeholder="Choose a designator">
+                    sdf
+                  </Select.Option>
+                </Select>
+
               </Form.Item>
             </Form>
             {showCompany.length ? (
