@@ -7,14 +7,14 @@ import warning from "../../../assets/icons/Vector.svg";
 import CustomModal from "../../../components/modal";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { StringObject } from "../../../types/data.models";
+import { StringObject, TSelectData } from "../../../types/data.models";
 
 import MySelect from "../../../components/select";
 
 const AddressForm = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isFillForm, setIsFillForm] = useState<StringObject>({});
-  const [states, setStates] = useState([
+  const [states, setStates] = useState<TSelectData[]>([
     {
       id: 1,
       label: "Alabama",

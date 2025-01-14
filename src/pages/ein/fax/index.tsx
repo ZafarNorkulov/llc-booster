@@ -7,13 +7,14 @@ import Steps from "../../../components/steps";
 import Logo from "../../../components/logo";
 import MySelect from "../../../components/select";
 import { useState } from "react";
+import { TSelectData } from "../../../types/data.models";
 
 const Fax = () => {
   dayjs.extend(customParseFormat);
   const dateFormat = "DD.MM.YYYY";
   const customFormat: DatePickerProps["format"] = (value) =>
     `${value.format(dateFormat)}`;
-  const [options, setOptions] = useState([
+  const [options, setOptions] = useState<TSelectData[]>([
     { id: 1, label: "LLC", checked: true },
     { id: 2, label: "hfdLLC", checked: false },
   ]);
