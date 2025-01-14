@@ -29,9 +29,14 @@ import Consultation from "./pages/business-bank/consultation";
 import { useEffect } from "react";
 import Checkout from "./pages/checkout";
 import MemberData from "./pages/form/members/memberData";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
   useEffect(() => {
+    AOS.init({
+      duration: 800,
+    });
     const tg = (window as any).Telegram.WebApp;
 
     tg.ready();

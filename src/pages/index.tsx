@@ -150,6 +150,7 @@ const Home = () => {
       <img src={Hero} className="mt-3 w-full" />
       <div className="grid grid-cols-12 gap-[5px] mt-[5px]">
         <Link
+        data-aos="flip-left"
           to="/form/start-business"
           className="col-span-4 flex flex-col flex-shrink-0 gap-1 items-center border border-white rounded-xl px-3 py-1 "
           style={{
@@ -163,6 +164,8 @@ const Home = () => {
           </span>
         </Link>
         <Link
+        data-aos="flip-left"
+        data-aos-delay="100"
           to={"/package"}
           className="col-span-4 flex flex-col flex-shrink-0 gap-1 items-center border border-white rounded-xl px-3 py-1"
           style={{
@@ -177,6 +180,8 @@ const Home = () => {
           </span>
         </Link>
         <Link
+        data-aos="flip-left"
+        data-aos-delay="200"
           to={"/ein"}
           className="col-span-4 flex flex-col flex-shrink-0 gap-1 items-center border border-white rounded-xl px-3 py-1 "
           style={{
@@ -190,27 +195,27 @@ const Home = () => {
           </span>
         </Link>
       </div>
-      <div className="flex flex-col gap-2 mt-[30px]">
+      <div className="flex flex-col gap-2 mt-[30px]" data-aos="fade-up" data-aos-delay="200" >
         {menus.map((item) => (
-          <Link
-            to={item.url}
-            className="p-2 bg-white cursor-pointer rounded-[8px] border border-white flex items-center gap-[10px]"
-            key={item.id}
-          >
-            <img
-              src={item.icon}
-              className=" bg-[#F3F5F6] rounded-[8px] "
-              style={{
-                boxShadow: "0px 2px 8.7px 0px rgba(206, 205, 205, 0.25)",
-              }}
-            />
-            <span
-              className="text-base text-dark font-medium
-            "
+            <Link
+              to={item.url}
+              className="p-2 bg-white cursor-pointer rounded-[8px] border border-white flex items-center gap-[10px]"
+              key={item.id}
             >
-              {item.title}
-            </span>
-          </Link>
+              <img
+                src={item.icon}
+                className=" bg-[#F3F5F6] rounded-[8px] "
+                style={{
+                  boxShadow: "0px 2px 8.7px 0px rgba(206, 205, 205, 0.25)",
+                }}
+              />
+              <span
+                className="text-base text-dark font-medium
+            "
+              >
+                {item.title}
+              </span>
+            </Link>
         ))}
       </div>
     </div>
