@@ -1,50 +1,57 @@
 import SectionTitle from "../../../components/sectionTitle";
 import { useState } from "react";
-import { Form, Input, Select } from "antd";
+import { Form, Input } from "antd";
 import PageSwitcher from "../../../components/pageSwitcher";
 import Steps from "../../../components/steps";
 import CustomModal from "../../../components/modal";
 import Logo from "../../../components/logo";
 import warning from "../../../assets/icons/Vector.svg";
 import { useNavigate } from "react-router-dom";
-// import MySelect from "../../../components/select";
-// import { TSelectData } from "../../../types/data.models";
+import MySelect from "../../../components/select";
+import { TSelectData } from "../../../types/data.models";
+
+
 
 const StartBusiness = () => {
-  // const [state, setState] = useState<TSelectData[]>([
-  //   {
-  //     id: 1,
-  //     label: "Alabama",
-  //     checked: false,
-  //   },
-  //   {
-  //     id: 2,
-  //     label: "Alaska",
-  //     checked: false,
-  //   },
-  //   {
-  //     id: 3,
-  //     label: "Arizona",
-  //     checked: false,
-  //   },
-  // ]);
-  // const [organizations, setOrganizations] = useState<TSelectData[]>([
-  //   {
-  //     id: 1,
-  //     label: "LLC",
-  //     checked: false,
-  //   },
-  //   {
-  //     id: 2,
-  //     label: "S-Corporation",
-  //     checked: false,
-  //   },
-  //   {
-  //     id: 3,
-  //     label: "C-Corporation",
-  //     checked: false,
-  //   },
-  // ]);
+  const [state, setState] = useState<TSelectData[]>([
+    {
+      id: 1,
+      label: "Alabama",
+      checked: false,
+    },
+    {
+      id: 2,
+      label: "Alaska",
+      checked: false,
+    },
+    {
+      id: 3,
+      label: "Arizona",
+      checked: false,
+    },
+  ]);
+  const [organizations, setOrganizations] = useState<TSelectData[]>([
+    {
+      id: 1,
+      label: "LLC",
+      checked: false,
+    },
+    {
+      id: 2,
+      label: "S-Corporation",
+      checked: "coming soon",
+    },
+    {
+      id: 3,
+      label: "C-Corporation",
+      checked: "coming soon",
+    },
+    {
+      id: 4,
+      label: "Non Profit",
+      checked: "coming soon",
+    },
+  ]);
   const [openModal, setOpenModal] = useState(false);
   const [form] = Form.useForm();
 
@@ -80,10 +87,12 @@ const StartBusiness = () => {
                 form.getFieldError("state").length > 0 ? "error" : ""
               }
             >
-              {/* <MySelect placeholder="State" options={state} setOptions={setState} /> */}
-              <Select placeholder="State" >
-                <Select.Option value="arizona">Arizona</Select.Option>
-              </Select>
+              <MySelect
+                placeholder="State"
+                selectText="State of Formation"
+                options={state}
+                setOptions={setState}
+              />
             </Form.Item>
             <Form.Item
               hasFeedback
@@ -93,24 +102,30 @@ const StartBusiness = () => {
                 form.getFieldError("organization").length > 0 ? "error" : ""
               }
             >
-              {/* <MySelect
+              <MySelect
                 placeholder="Organization type"
+                selectText="Organization type"
                 options={organizations}
                 setOptions={setOrganizations}
-              /> */}
-              <Select placeholder="Organization type">
-                <Select.Option value="dss">dsgg</Select.Option>
-              </Select>
+              />
             </Form.Item>
             <Form.Item
-              name={"business"}
+              name="business"
               label={
-                <div className="flex items-center gap-1">
+                <div
+                  className="flex items-center gap-1"
+                  onMouseDown={(e) => {
+                    e.preventDefault(); // Fokusni oldini oladi
+                  }}
+                >
                   <span>Business purpose</span>
                   <img
                     src={warning}
                     className="w-4 h-4"
-                    onClick={() => setOpenModal(true)}
+                    onClick={(e) => {
+                      e.stopPropagation(); // `img` klikni oldini oladi
+                      setOpenModal(true); // Modalni ochadi
+                    }}
                   />
                 </div>
               }
@@ -119,7 +134,7 @@ const StartBusiness = () => {
                 form.getFieldError("business").length > 0 ? "error" : ""
               }
             >
-              <Input type="text" />
+              <Input type="text" id="custom-business-input" />
             </Form.Item>
           </Form>
           <PageSwitcher next={"/form/company-info"} onClick={onFinish} />

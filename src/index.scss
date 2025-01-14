@@ -33,6 +33,13 @@ section {
 }
 
 .ein {
+  .ant-radio-wrapper {
+
+    span:nth-child(2) {
+      display: block;
+    padding: 0!important;
+    }
+  }
   .ant-radio-wrapper-checked {
     background: #fff;
     border-color: #004cff;
@@ -100,12 +107,18 @@ section {
     display: none !important;
   }
 }
+.ant-select-item {
+  border-radius: 0 !important;
+  padding: 9px 9px 12px 12px !important;
+}
 
 .ant-select-dropdown {
+  padding: 0;
   span {
     font-family: "Roboto", serif;
   }
 }
+
 .ant-select-item {
   background: #fff !important;
   &:hover {

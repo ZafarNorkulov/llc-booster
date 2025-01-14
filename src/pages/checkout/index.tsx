@@ -21,7 +21,7 @@ const Checkout = () => {
         </div>
         <div className="px-5 py-[30px] rounded-[25px] bg-white mt-4">
           <div className="flex-flex-col gap-1">
-            <h5 className="text-base leading-4 text-dark">
+            <h5 className="text-base leading-4 text-dark font-bold">
               LLC registration service
             </h5>
             <p className="text-mini-app text-sm leading-[22px] ">

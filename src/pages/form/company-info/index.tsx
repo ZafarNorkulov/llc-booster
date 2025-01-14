@@ -1,19 +1,24 @@
 import { useState } from "react";
 import SectionTitle from "../../../components/sectionTitle";
-import { Button, Form, Input, Select } from "antd";
+import { Button, Form, Input } from "antd";
 import PageSwitcher from "../../../components/pageSwitcher";
 import Steps from "../../../components/steps";
 import Logo from "../../../components/logo";
 import warning from "../../../assets/icons/Vector.svg";
 import CustomModal from "../../../components/modal";
-// import MySelect from "../../../components/select";
-// import { TSelectData } from "../../../types/data.models";
+import MySelect from "../../../components/select";
+import { TSelectData } from "../../../types/data.models";
 
 const CompanyInfo = () => {
   const [form] = Form.useForm();
   const [showCompany, setShowCompany] = useState<string[]>([]);
   const [modalId, setModalId] = useState<number | null>(null);
-  // const [designators, setDesignators] = useState<TSelectData[]>([]);
+  const [designators, setDesignators] = useState<TSelectData[]>([
+    { id: 1, label: "LLC", checked: false },
+    { id: 2, label: "L.L.C", checked: false },
+    { id: 3, label: "LIMITED LIABILITY COMPANY", checked: false },
+    { id: 4, label: "Corp.", checked: false },
+  ]);
 
   const handleValuesChange = () => {
     const values = form.getFieldsValue(); // Formadagi barcha qiymatlarni oling
@@ -57,7 +62,7 @@ const CompanyInfo = () => {
                   </div>
                 }
               >
-                <Input />
+                <Input  id="info"/>
               </Form.Item>
               <Form.Item
                 name={"designator"}
@@ -72,17 +77,12 @@ const CompanyInfo = () => {
                   </div>
                 }
               >
-                {/* <MySelect
+                <MySelect
                   placeholder="Choose a designator"
+                  selectText="Choose a designator"
                   options={designators}
                   setOptions={setDesignators}
-                /> */}
-                <Select placeholder="Choose a designator">
-                  <Select.Option value="ss">
-                    sdf
-                  </Select.Option>
-                </Select>
-
+                />
               </Form.Item>
             </Form>
             {showCompany.length ? (

@@ -1,4 +1,4 @@
-import {  ReactNode } from "react";
+import { ReactNode } from "react";
 
 export interface ICardDefinition {
   id: number;
@@ -27,7 +27,7 @@ export type StringObject = {
 };
 
 export type TSelectData = {
-  id:number,
-  label:string,
-  checked:boolean
+  id: number;
+  label: string;
+  checked: boolean | string;
 };

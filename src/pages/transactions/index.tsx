@@ -1,6 +1,7 @@
 import Logo from "../../components/logo";
 import SectionTitle from "../../components/sectionTitle";
 import transactions from "../../assets/icons/uil_transaction.svg";
+import download from "../../assets/icons/download-dark.svg";
 
 const TransactionHistory = () => {
   const handleDownload = () => {
@@ -44,6 +45,7 @@ const TransactionHistory = () => {
           onClick={handleDownload}
           className="flex justify-end gap-1 py-[3px] px-[6px]  rounded-full bg-[#FAFAFA]"
         >
+          <img src={download} width={14} height={14} />
           <span className="text-[10px] text-dark">Download (PDF)</span>
         </div>
       </div>

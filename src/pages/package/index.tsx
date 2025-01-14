@@ -41,12 +41,12 @@ const Package = () => {
         {
           id: 5,
           text: "Free 1 st Year Registered Agent Service! (then 123$/years)",
-          isActive: false,
+          isActive: true,
         },
         {
           id: 6,
           text: "Specialized support",
-          isActive: false,
+          isActive: true,
         },
         {
           id: 7,
@@ -250,7 +250,7 @@ const Package = () => {
                         <p
                           className={`text-sm ${
                             content.isActive ? "text-dark" : "text-[#A0ABBB]"
-                          }  leading-4 font-roboto text-medium`}
+                          }  leading-4 font-inter font-medium`}
                         >
                           {content?.text}
                         </p>

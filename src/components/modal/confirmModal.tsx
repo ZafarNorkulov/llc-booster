@@ -10,12 +10,14 @@ const ConfirmModal = ({
   enter,
   reEnter,
   onClick,
+  founder,
 }: {
   open: boolean;
   setFormModal: Dispatch<SetStateAction<StringObject>>;
   enter: string;
   reEnter?: string;
   onClick?: () => void;
+  founder?:number | undefined
 }) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -51,7 +53,7 @@ const ConfirmModal = ({
               </p>
             </div>
             <h5 className="font-bold text-dark text-sm font-roboto mt-5">
-              Member 1
+              Member {founder}
             </h5>
             <div
               className="address flex flex-col gap-1 text-sm leading-4 font-roboto py-[10px] px-4 mt-3 rounded-xl"

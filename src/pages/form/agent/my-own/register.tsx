@@ -4,10 +4,12 @@ import { StringObject } from "../../../../types/data.models";
 import PageSwitcher from "../../../../components/pageSwitcher";
 import Steps from "../../../../components/steps";
 import SectionTitle from "../../../../components/sectionTitle";
+import { useNavigate } from "react-router-dom";
 
 const OwnAgentRegister = () => {
   const [radioVal, setRadioVal] = useState("Individual");
   const [formModal, setIsFormModal] = useState<StringObject>({});
+  const navigate = useNavigate();
 
   const radioChange = (e: RadioChangeEvent) => {
     setRadioVal(e.target.value);
@@ -23,6 +25,7 @@ const OwnAgentRegister = () => {
       .then(() => {
         // Agar forma valid bo'lsa, sahifaga o'tadi
         form.submit();
+        navigate("/business-bank");
       })
       .catch((errorInfo) => {
         // Agar forma valid bo'lmasa, xatolikni konsolda ko'rsatadi

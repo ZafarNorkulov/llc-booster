@@ -1,4 +1,4 @@
-import { Select } from "antd";
+import { Button, Select } from "antd";
 import { useState } from "react";
 import Logo from "../components/logo";
 import Hero from "../assets/banner.png";
@@ -89,43 +89,63 @@ const Home = () => {
 
   return (
     <div className="home max-container w-full">
-      <div className="relative flex justify-between items-center w-full">
-        <div></div>
-        <Logo />
-        <Select
-          value={tempSelectedValue}
-          onChange={handleChange}
-          defaultValue={selectedValue}
-          placeholder="Language"
-          className="text-slate-500 w-[70px]"
-          dropdownStyle={{
-            width: "100%",
-            maxWidth: "92%",
-            top: "60px",
-            boxShadow:
-              "0px 9px 28px 8px #0000000D,0px 6px 16px 0px #00000014,0px 3px 6px -4px #0000001F",
-          }}
-        >
-          {options?.map((item) => (
-            <Option key={item.value} value={item.label}>
-              <div className="flex justify-between ">
-                <span className="text-sm font-medium font-roboto leading-[22px] text-dark">
-                  {item.label}
-                </span>
-                <span
-                  className="flex items-center justify-center w-[22px] h-[22px] rounded-full"
-                  style={
-                    item.checked
-                      ? { background: "#0499F6" }
-                      : { background: "#E3E5E5" }
-                  }
+      <div className="grid grid-cols-12">
+        <div className="col-span-4" />
+        <div className="col-span-4 flex items-center">
+          <Logo />
+        </div>
+        <div className="col-span-4 flex justify-end">
+          <Select
+            value={tempSelectedValue}
+            onChange={handleChange}
+            defaultValue={selectedValue}
+            placeholder="Language"
+            className="text-slate-500 w-[70px]"
+            dropdownRender={(menu) => (
+              <div>
+                <div className="py-[7px] px-3 text-sm leading-[22px] font-roboto text-mini-app">
+                  Language
+                </div>
+                {menu}
+                <Button
+                  type="primary"
+                  size="large"
+                  className="w-[93%] m-[12px] "
                 >
-                  <img src={check} />
-                </span>
+                  Save
+                </Button>
               </div>
-            </Option>
-          ))}
-        </Select>
+            )}
+            dropdownStyle={{
+              width: "100%",
+              padding: 0,
+              maxWidth: "92%",
+              top: "60px",
+              boxShadow:
+                "0px 9px 28px 8px #0000000D,0px 6px 16px 0px #00000014,0px 3px 6px -4px #0000001F",
+            }}
+          >
+            {options?.map((item) => (
+              <Option key={item.value} value={item.label}>
+                <div className="flex justify-between ">
+                  <span className="text-sm font-medium font-roboto leading-[22px] text-dark">
+                    {item.label}
+                  </span>
+                  <span
+                    className="flex items-center justify-center w-[22px] h-[22px] rounded-full"
+                    style={
+                      item.checked
+                        ? { background: "#0499F6" }
+                        : { background: "#E3E5E5" }
+                    }
+                  >
+                    <img src={check} />
+                  </span>
+                </div>
+              </Option>
+            ))}
+          </Select>
+        </div>
       </div>
       <img src={Hero} className="mt-3 w-full" />
       <div className="grid grid-cols-12 gap-[5px] mt-[5px]">

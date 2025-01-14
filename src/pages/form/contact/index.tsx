@@ -39,12 +39,13 @@ const ContactPerson = () => {
             <Form.Item
               name={"first_name"}
               label={
-                <div className="flex">
-                  <span>First Name</span>!
+                <div className="flex items-center gap-1">
+                  <span>First Name</span>
+                  <img src={warning} className="w-4 h-4 cursor-pointer" />
                 </div>
               }
             >
-              <Input allowClear />
+              <Input allowClear id="firs-name" />
             </Form.Item>
             <Form.Item name={"last_name"} label={"Last Name"}>
               <Input allowClear />

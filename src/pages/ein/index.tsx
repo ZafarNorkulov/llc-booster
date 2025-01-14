@@ -17,11 +17,11 @@ const Ein = () => {
   return (
     <section className="ein">
       <div className="max-container">
-          <Logo />
+        <Logo />
         <SectionTitle title="Apply for EIN" />
         <div className="flex flex-col gap-2">
           <Radio.Group
-          defaultValue={selectedRadio}
+            defaultValue={selectedRadio}
             className="flex flex-col gap-[9px]"
             onChange={(e) => setSelectedradio(e.target.value)}
             value={selectedRadio}
@@ -35,27 +35,32 @@ const Ein = () => {
                   Apply for EIN via Fax
                 </h1>
                 <p className="text-sm leading-[18px] font-medium text-qestin">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. A,
-                  iure!
+                  This option is for foreign applicants or those without an
+                  SSN/ITIN
                 </p>
               </div>
             </Radio>
             <Radio
               value="option2"
-              className="border border-white rounded-[16px] px-5 py-4 w-full gap-x-[22px]"
+              className="flex border border-white rounded-[16px] px-[18px] py-4 w-full"
             >
-              <div className="flex flex-col gap-[7px]">
+              <div className="flex flex-col gap-[7px] ml-[22px]">
                 <h1 className="font-bold text-base text-dark">
                   Apply for EIN Online
                 </h1>
-                <p className="text-sm leading-[18px] font-medium text-qestin">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Quisquam, nobis asperiores provident esse et sit.
+                <p className=" text-sm leading-[18px] font-medium text-questin">
+                  This option is available for US residents or applicants with
+                  an SSN/ITIN. You will be redirected to the IRS website
                 </p>
               </div>
             </Radio>
           </Radio.Group>
-          <Button size="large" type="primary" onClick={chooseEin} className="w-full">
+          <Button
+            size="large"
+            type="primary"
+            onClick={chooseEin}
+            className="w-full"
+          >
             Choose
           </Button>
         </div>

@@ -28,6 +28,7 @@ import OwnAgentRegister from "./pages/form/agent/my-own/register";
 import Consultation from "./pages/business-bank/consultation";
 import { useEffect } from "react";
 import Checkout from "./pages/checkout";
+import MemberData from "./pages/form/members/memberData";
 
 function App() {
   useEffect(() => {
@@ -56,6 +57,7 @@ function App() {
             <Route path="/form/package" element={<CompanyPackage />} />
             <Route path="/form/package/address" element={<AddressForm />} />
             <Route path="/form/members" element={<Members />} />
+            <Route path="/form/members/members-data" element={<MemberData />} />
             <Route path="/form/register-agent" element={<RegisterAgent />} />
             <Route path="/form/my-own" element={<OwnAgent />} />
             <Route
