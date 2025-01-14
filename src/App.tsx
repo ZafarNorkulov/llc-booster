@@ -46,7 +46,7 @@ function App() {
   return (
     <>
       <Router>
-        <div className="flex flex-col justify-between min-h-screen">
+        <div className="flex flex-col justify-between min-h-screen" data-aos="fade-down">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/package" element={<Package />} />
