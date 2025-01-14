@@ -32,7 +32,7 @@ const Home = () => {
       id: 1,
       title: "My companies",
       icon: Company,
-      url: "/package",
+      url: "/my-companies",
     },
     {
       id: 2,
