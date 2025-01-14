@@ -97,7 +97,7 @@ const ContactPerson = () => {
           <span className="text-lg leading-5 text-color2 max-w-[180px] mx-auto block text-center">
             We’ll keep your information private
           </span>
-          <PageSwitcher next="/form/package" />
+          <PageSwitcher next="/package" />
           <CustomModal
             open={modalId === 1}
             title="Contact Person"

@@ -263,7 +263,7 @@ const Package = () => {
           ))}
         </div>
         <div className="mt-[32px]" />
-        <PageSwitcher next="/ein" />
+        <PageSwitcher next="/form/package" />
       </div>
     </section>
   );

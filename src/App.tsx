@@ -40,13 +40,13 @@ function App() {
     const tg = (window as any).Telegram.WebApp;
 
     tg.ready();
-    console.log("Foydalanuvchi:", tg.initDataUnsafe?.user);
+
   }, []);
 
   return (
     <>
       <Router>
-        <div className="flex flex-col justify-between min-h-screen" data-aos="fade-down">
+        <div className="flex flex-col justify-between min-h-screen">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/package" element={<Package />} />
