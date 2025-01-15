@@ -25,7 +25,7 @@ const OwnAgentRegister = () => {
       .then(() => {
         // Agar forma valid bo'lsa, sahifaga o'tadi
         form.submit();
-        navigate("/business-bank");
+        navigate("/form/professional");
       })
       .catch((errorInfo) => {
         // Agar forma valid bo'lmasa, xatolikni konsolda ko'rsatadi
@@ -103,7 +103,7 @@ const OwnAgentRegister = () => {
               <Input placeholder="12345" />
             </Form.Item>
           </Form>
-          <PageSwitcher next="/business-bank" onClick={handleClick} />
+          <PageSwitcher next="/form/professional" onClick={handleClick} />
         </div>
       </div>
     </section>

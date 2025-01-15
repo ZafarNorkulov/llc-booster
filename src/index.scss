@@ -34,10 +34,9 @@ section {
 
 .ein {
   .ant-radio-wrapper {
-
     span:nth-child(2) {
       display: block;
-    padding: 0!important;
+      padding: 0 !important;
     }
   }
   .ant-radio-wrapper-checked {
@@ -146,6 +145,22 @@ section {
   .ant-radio-inner {
     background: #004cff !important;
     border: #004cff !important;
+  }
+}
+.language-select {
+  .rc-virtual-list {
+    height: 340px;
+  }
+  .rc-virtual-list-holder {
+    >div{
+      height: 300px !important;
+    }
+    max-height: 350px !important;
+    &-inner {
+      height: 350px;
+      transform: translateY(0px) !important;
+      overflow: hidden
+    }
   }
 }
 

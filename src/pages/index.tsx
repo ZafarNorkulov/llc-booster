@@ -24,8 +24,16 @@ const Home = () => {
   const [tempSelectedValue, setTempSelectedValue] = useState<string>("EN");
   const [options, setOptions] = useState<IOption[]>([
     { label: "English (EN)", value: "EN", checked: true },
-    { label: "Uzbek (UZ)", value: "UZ", checked: false },
-    { label: "Russian (RU)", value: "RU", checked: false },
+    { label: "Español (ES)", value: "ES", checked: false },
+    { label: "Français (FR)", value: "FR", checked: false },
+    { label: "Deutsch (DE)", value: "DE", checked: false },
+    { label: "Português (PT)", value: "PT", checked: false },
+    { label: "Русский (PУ)", value: "PУ", checked: false },
+    { label: "हिन्दी (हि)", value: "हि", checked: false },
+    { label: "中文 (中)", value: "中", checked: false },
+    { label: "Bahasa Indonesia (ID)", value: "ID", checked: false },
+    { label: "العربية (ع)", value: "ع", checked: false },
+    { label: "বাংলা (বা)", value: "বা", checked: false },
   ]);
   const [menus] = useState([
     {
@@ -89,7 +97,7 @@ const Home = () => {
 
   return (
     <div className="home max-container w-full">
-      <div className="grid grid-cols-12">
+      <div className="grid grid-cols-12 items-center">
         <div className="col-span-4" />
         <div className="col-span-4 flex items-center">
           <Logo />
@@ -102,11 +110,11 @@ const Home = () => {
             placeholder="Language"
             className="text-slate-500 w-[70px]"
             dropdownRender={(menu) => (
-              <div>
-                <div className="py-[7px] px-3 text-sm leading-[22px] font-roboto text-mini-app">
+              <div className="h-[85vh] flex flex-col ">
+                <div className=" py-[7px] px-3 text-sm leading-[22px] font-roboto text-mini-app">
                   Language
                 </div>
-                {menu}
+                <div className="language-select flex-1 overflow-y-auto">{menu}</div>
                 <Button
                   type="primary"
                   size="large"
@@ -118,9 +126,11 @@ const Home = () => {
             )}
             dropdownStyle={{
               width: "100%",
+              maxHeight: "85vh",
               padding: 0,
               maxWidth: "92%",
               top: "60px",
+              overflow: "hidden",
               boxShadow:
                 "0px 9px 28px 8px #0000000D,0px 6px 16px 0px #00000014,0px 3px 6px -4px #0000001F",
             }}
@@ -150,7 +160,7 @@ const Home = () => {
       <img src={Hero} className="mt-3 w-full" />
       <div className="grid grid-cols-12 gap-[5px] mt-[5px]">
         <Link
-        data-aos="flip-left"
+          data-aos="flip-left"
           to="/form/start-business"
           className="col-span-4 flex flex-col flex-shrink-0 gap-1 items-center border border-white rounded-xl px-3 py-1 "
           style={{
@@ -164,8 +174,8 @@ const Home = () => {
           </span>
         </Link>
         <Link
-        data-aos="flip-left"
-        data-aos-delay="100"
+          data-aos="flip-left"
+          data-aos-delay="100"
           to={"/package"}
           className="col-span-4 flex flex-col flex-shrink-0 gap-1 items-center border border-white rounded-xl px-3 py-1"
           style={{
@@ -180,8 +190,8 @@ const Home = () => {
           </span>
         </Link>
         <Link
-        data-aos="flip-left"
-        data-aos-delay="200"
+          data-aos="flip-left"
+          data-aos-delay="200"
           to={"/ein"}
           className="col-span-4 flex flex-col flex-shrink-0 gap-1 items-center border border-white rounded-xl px-3 py-1 "
           style={{
@@ -195,27 +205,31 @@ const Home = () => {
           </span>
         </Link>
       </div>
-      <div className="flex flex-col gap-2 mt-[30px]" data-aos="fade-up" data-aos-delay="200" >
+      <div
+        className="flex flex-col gap-2 mt-[30px]"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
         {menus.map((item) => (
-            <Link
-              to={item.url}
-              className="p-2 bg-white cursor-pointer rounded-[8px] border border-white flex items-center gap-[10px]"
-              key={item.id}
-            >
-              <img
-                src={item.icon}
-                className=" bg-[#F3F5F6] rounded-[8px] "
-                style={{
-                  boxShadow: "0px 2px 8.7px 0px rgba(206, 205, 205, 0.25)",
-                }}
-              />
-              <span
-                className="text-base text-dark font-medium
+          <Link
+            to={item.url}
+            className="p-2 bg-white cursor-pointer rounded-[8px] border border-white flex items-center gap-[10px]"
+            key={item.id}
+          >
+            <img
+              src={item.icon}
+              className=" bg-[#F3F5F6] rounded-[8px] "
+              style={{
+                boxShadow: "0px 2px 8.7px 0px rgba(206, 205, 205, 0.25)",
+              }}
+            />
+            <span
+              className="text-base text-dark font-medium
             "
-              >
-                {item.title}
-              </span>
-            </Link>
+            >
+              {item.title}
+            </span>
+          </Link>
         ))}
       </div>
     </div>
