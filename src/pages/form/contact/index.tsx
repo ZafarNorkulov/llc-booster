@@ -69,7 +69,7 @@ const ContactPerson = () => {
                 country={"ru"}
                 value={phone}
                 onChange={(phone) => setPhone(phone)}
-                inputStyle={{ padding: "7px 11px 7px 50px", border: "none" }}
+                inputStyle={{ padding: "7px 11px 7px 50px", border: "none",width:"100%" }}
               />
             </Form.Item>
             <div className="flex gap-[10px]  ">
