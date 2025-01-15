@@ -110,7 +110,7 @@ const Home = () => {
             placeholder="Language"
             className="text-slate-500 w-[70px]"
             dropdownRender={(menu) => (
-              <div className="h-[85vh] flex flex-col ">
+              <div>
                 <div className=" py-[7px] px-3 text-sm leading-[22px] font-roboto text-mini-app">
                   Language
                 </div>
